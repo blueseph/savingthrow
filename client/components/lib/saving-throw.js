@@ -14,6 +14,9 @@
           var baseUrl = "client/components/";
 
           $stateProvider
+
+            //homepage
+
             .state('home', {
               url: '/',
               templateUrl: baseUrl + 'home/index.ng.html',
@@ -26,6 +29,18 @@
             .state('terms', {
               url: '/terms',
               templateUrl: baseUrl + 'terms/index.ng.html',
+            })
+
+            //login
+            .state('login', {
+              url: '/login',
+              templateUrl: baseUrl + 'login/index.ng.html',
+              controller: 'loginCtrl'
+            })
+            .state('register', {
+              url: '/register',
+              templateUrl: baseUrl + 'register/index.ng.html',
+              controller: 'registerCtrl'
             });
 
           $urlRouterProvider.otherwise("/");

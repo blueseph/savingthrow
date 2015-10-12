@@ -24,3 +24,6 @@ thegeekmachine:ruby-sass
 materialize:materialize@=0.97.0
 fourseven:scss
 momentjs:moment
+accounts-ui
+accounts-password
+urigo:angular-blaze-template
