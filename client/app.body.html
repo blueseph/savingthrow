@@ -3,7 +3,9 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">Saving Throw</a>
       <ul class="right bottom-on-med-and-down"
-          ng-hide="currentPath === '/'">
+          ng-hide="currentPath === '/' ||
+                   currentPath === '/terms' ||
+                   currentPath === '/privacy'">
         <li><a href="sass.html">Characters</a></li>
         <li><a href="sass.html">Filler</a></li>
         <li><a href="badges.html">Settings</a></li>
