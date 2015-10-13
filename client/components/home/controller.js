@@ -8,6 +8,8 @@
                 indexCtrl]);
 
     function indexCtrl($scope, $location) {
-
+        $scope.register = function() {
+          $location.path('/register');
+        };
     }
 })();
