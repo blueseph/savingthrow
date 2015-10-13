@@ -30,6 +30,11 @@
         return false;
 
       };
+
+      $scope.logout = function() {
+        Meteor.logout();
+        $location.path('/');
+      };
     }
 
 })();

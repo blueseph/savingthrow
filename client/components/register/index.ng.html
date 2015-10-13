@@ -1,33 +1,59 @@
 <div class="content-body"
-      ng-controller="indexCtrl as ic">
+      ng-controller="registerCtrl as rc">
   <div class="container row">
-    <div class="login col s4 offset-s3">
+    <form name="registerForm"
+          class="register col s12 l4 m6 offset-s3 offset-l3">
       <h5 class="center-align">We'd love to have you</h5>
 
       <div class="input-field col s12">
+        <input type="email"
+               ng-model="email"
+               class="validate"
+               name="email"/>
+        <label for="email"
+                data-error="Email must be valid."
+                data-success="Email is valid.">Email</label>
+      </div>
+      <div class="input-field col s12">
         <input type="text"
-               ng-
-               name="email" />
-        <label for="email">Email</label>
+               class="validate"
+               minlength=2
+               ng-model="username"
+               name="username"/>
+        <label for="username"
+               data-error="Username must be at least 6 characters."
+               data-success="Username is valid.">Username</label>
       </div>
       <div class="input-field col s12">
         <input type="password"
-               name="password" />
-        <label for="password">Password</label>
+               class="validate"
+               ng-model="password"
+               minlength=6
+               name="password"/>
+        <label for="password"
+               data-error="Password must be at least 6 characters."
+               data-success="Password is valid.">Password</label>
       </div>
       <div class="input-field col s12">
         <input type="password"
-               name="passwordV" />
-        <label for="passwordV">Verify Password</label>
+               class="validate"
+               minlength=6
+               ng-model="passwordV"
+               name="passwordV"/>
+        <label for="passwordV"
+               data-error={{passwordVError()}}
+               data-success="Password is valid and matches.">Verify Password</label>
       </div>
 
-      <button class="btn col s12">Login</button>
-    </div>
+      <button class="waves-effect waves-light btn col s12"
+              ng-click="doRegister()">Register</button>
+    </form>
     <div class="switch col s4 offset-s3">
       <p>
-        Don't have an account?
+        Already registered?
       </p>
-      <button class="btn col s12">Register</button>
+      <button class="btn col s12"
+              ng-click="toLogin()">Login</button>
     </div>
   </div>
 </div>
