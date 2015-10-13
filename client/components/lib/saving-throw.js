@@ -44,10 +44,10 @@
             })
 
           //logged in
-          .state('lobby', {
-            url: '/lobby',
-            templateUrl: baseUrl + 'lobby/index.ng.html',
-            controller: 'lobbyCtrl',
+          .state('characters', {
+            url: '/characters',
+            templateUrl: baseUrl + 'characters/index.ng.html',
+            controller: 'charCtrl',
             resolve: {
               "currentUser": ["$meteor", function($meteor) {
                 return $meteor.requireUser();
@@ -66,7 +66,6 @@
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
       // We can catch the error thrown when the $requireUser promise is rejected
       // and redirect the user back to the main page
-      console.log(error);
       switch (error) {
         case "AUTH_REQUIRED":
           $state.go('home');

@@ -1,0 +1,32 @@
+<div class="row" ng-controller="charCtrl as cc">
+  <div class="leftBar col s12">
+    <div class="header">
+      <div class="input-field">
+        <input type="text"
+               name="search"
+               ng-model="searchText">
+        <label for="search">Search Characters</label>
+      </div>
+      <button class="btn">Add a Character</button>
+    </div>
+
+    <div class="characters">
+      <div class="character clearfix"
+           ng-repeat="character in characters">
+           <div class="name">
+             {{character.name}}
+           </div>
+           <div class="race">
+            {{character.race}}
+           </div>
+           <div class="alignment right">
+            {{character.alignment}}
+           </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="rightBar col s12">
+
+  </div>
+</div>

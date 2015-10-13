@@ -25,7 +25,7 @@
         }).then(function() {
           Materialize.toast('Account creation successful! Redirecting in 3 seconds', 3000, 'success-toast');
           $timeout(function() {
-            $location.path('/lobby');
+            $location.path('/characters');
           }, 3500);
         }, function(err) {
           Materialize.toast('Error creating account: ' + err.reason, 4000, 'failure-toast');

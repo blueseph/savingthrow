@@ -16,7 +16,7 @@
     $scope.doLogin = function() {
       if ($scope.email && $scope.password) {
         $meteor.loginWithPassword($scope.email, $scope.password).then(function() {
-          $location.path('/lobby');
+          $location.path('/characters');
         }, function(err) {
           Materialize.toast('Username or password is incorrect', 4000, 'failure-toast');
         });

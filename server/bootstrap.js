@@ -1,8 +1,21 @@
 Meteor.startup(function() {
 
+  if (Meteor.users.find().count() === 0) {
+    Accounts.createUser({
+      username: 'bruce',
+      email: 'bruce@bruce.com',
+      password: 'blueseph1'
+    });
+
+  var firstUser = Meteor.users.find().fetch()[0];
+
   if (Characters.find().count() === 0) {
     var sampleCharacter = {
+      userId: firstUser._id,
       name: 'Bruce Bruce',
+      alignment: 'Chaotic Neutral',
+      race: 'Human',
+      level: 1,
       stats: {
         strength: 18,
         dexterity: 14,
@@ -22,5 +35,7 @@ Meteor.startup(function() {
     };
 
     Characters.insert(sampleCharacter);
+  }
+
   }
 });

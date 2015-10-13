@@ -5,9 +5,9 @@
       <div ng-hide="isLoginArea()">
         <ul class="right bottom-on-med-and-down"
             ng-hide="isEntry()">
-          <li><a href="sass.html">Characters</a></li>
+          <li><a href="/characters">Characters</a></li>
           <li><a href="sass.html">Filler</a></li>
-          <li><a href="badges.html">Settings</a></li>
+          <li><a href="/settings">Settings</a></li>
           <li><a ng-click="logout()">Logout</a></li>
         </ul>
         <ul class="right bottom-on-med-and-down index"
@@ -20,19 +20,22 @@
   </nav>
 
   <div class="content">
-    <div ui-view>
+    <div class="wrapper">
+      <div ui-view>
+      </div>
+
     </div>
+    <footer class="clearfix container">
+      <div class="links left">
+        <ul>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="copyright right">
+        2015 &copy; - Saving Throw
+      </div>
+    </footer>
   </div>
 
-  <footer class="clearfix container">
-    <div class="links left">
-      <ul>
-        <li><a href="/privacy">Privacy</a></li>
-        <li><a href="/terms">Terms of Service</a></li>
-      </ul>
-    </div>
-    <div class="copyright right">
-      2015 &copy; - Saving Throw
-    </div>
-  </footer>
 </body>
