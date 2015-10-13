@@ -1,0 +1,35 @@
+<div class="content-body"
+      ng-controller="loginCtrl as lc">
+  <div class="container row">
+    <form class="login col s4 offset-s3">
+      <h5 class="center-align">Good to see you again!</h5>
+
+      <div class="input-field col s12">
+        <input type="email"
+               ng-model="email"
+               class="validate"
+               name="email" />
+               <label for="email"
+                       data-error="Please try a valid email"
+                       data-success="Email is valid.">Email</label>
+      </div>
+      <div class="input-field col s12">
+        <input type="password"
+               class="validate"
+               ng-model="password"
+               name="password"/>
+               <label for="password">Password</label>
+      </div>
+
+      <button class="waves-effect waves-light btn col s12"
+              ng-click="doLogin()">Login</button>
+    </form>
+    <div class="switch col s4 offset-s3">
+      <p>
+        Don't have an account?
+      </p>
+      <button class="waves-effect waves-light btn col s12"
+              ng-click="toRegister()">Register</button>
+    </div>
+  </div>
+</div>
