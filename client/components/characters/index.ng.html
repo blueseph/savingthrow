@@ -7,12 +7,14 @@
                ng-model="searchText">
         <label for="search">Search Characters</label>
       </div>
-      <button class="btn">Add a Character</button>
+      <button class="btn"
+              ng-click="newCharacter()">Add a Character</button>
     </div>
 
     <div class="characters">
       <div class="character clearfix"
-           ng-repeat="character in characters">
+           ng-repeat="character in characters | filter:searchText"
+           ng-click="selectCharacter(character._id)">
            <div class="name">
              {{character.name}}
            </div>
@@ -27,6 +29,7 @@
 
   </div>
   <div class="rightBar col s12">
-
+      <h2>{{character.name}}</h2>
   </div>
+
 </div>

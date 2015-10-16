@@ -3,6 +3,8 @@
 
   var app = angular
     .module("saving-throw", ['angular-meteor',
+      'ui.materialize',
+      'ui.router',
       'ui.router'
     ])
     .config(
@@ -53,7 +55,53 @@
                 return $meteor.requireUser();
               }]
             }
-          });
+          })
+
+          .state('characterDetail', {
+            url: '/character/:id',
+            templateUrl: baseUrl + 'characters/index.ng.html',
+            controller: 'charCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+
+          //character creation
+          .state('create', {
+            url:'/create/:id',
+            templateUrl: baseUrl + 'creation/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+
+          .state('create/race', {
+            url:'/create/:id/race',
+            templateUrl: baseUrl + 'creation/race/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+
+          .state('create/class', {
+            url:'/create/:id/class',
+            templateUrl: baseUrl + 'creation/class/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+          ;
 
           $urlRouterProvider.otherwise("/");
 

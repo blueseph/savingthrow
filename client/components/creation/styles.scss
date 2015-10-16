@@ -1,0 +1,28 @@
+.content {
+  .wrapper {
+
+    .entry, .response {
+      height: 100%;
+      padding: 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    .entry {
+      flex-direction: column;
+
+      .class, .subclass {
+        margin-top: 2rem;
+      }
+
+      button {
+        margin-top: 3rem;
+        background: #3498DB;
+      }
+    }
+
+    .response {
+      background: #aaa;
+    }
+  }
+}

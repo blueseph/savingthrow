@@ -14,6 +14,10 @@
       .header {
         padding: 10px 15px;
 
+        label {
+          pointer-events: none;
+        }
+
         button {
           background:#3498DB;
           margin-top: 1.3rem;
@@ -38,7 +42,7 @@
 
         .alignment, .race {
           display: inline-block;
-          font-size: .7em;
+          font-size: .80em;
         }
       }
 
@@ -48,8 +52,10 @@
     }
 
     .rightBar {
-      width: calc(100vw - 240px);
+      padding: 15px;
+      width: calc(100vw - 270px);
     }
+
   }
 }
 

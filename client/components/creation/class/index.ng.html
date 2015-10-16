@@ -1,0 +1,26 @@
+<div class="row" ng-controller="createCtrl as cc">
+  <div class="entry col l5">
+    <h5>Next, let's choose your class</h5>
+    <div class="class col l12">
+      <p>Your class broadly dictates your vocation, talents, and tactics</p>
+      <div class="input-field col s5 center-align">
+        <select  material-select watch
+          ng-model="character.class"
+          ng-init="character.class = classes[0]">
+          <option ng-repeat="class in classes">{{class}}</option>
+        </select>
+        <label>Standard Classes</label>
+      </div>
+    </div>
+
+    <div class="button col l12">
+      <button class="btn right"
+              ng-click="toState('race')">Previous</button>
+      <button class="btn right"
+              ng-click="selectedRace()">Next</button>
+    </div>
+  </div>
+  <div class="response col l7">
+    Class specific things would go here eventually
+  </div>
+</div>

@@ -11,7 +11,7 @@ Meteor.startup(function() {
 
   if (Characters.find().count() === 0) {
     var sampleCharacter = {
-      userId: firstUser._id,
+      owner: firstUser._id,
       name: 'Bruce Bruce',
       alignment: 'Chaotic Neutral',
       race: 'Human',
