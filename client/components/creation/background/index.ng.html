@@ -1,8 +1,25 @@
 <div class="row" ng-controller="createCtrl as cc">
-  <div class="entry col l4">
-    Background here
+  <div class="entry col l5">
+    <div class="class col l12">
+      <p>Your background provides important story cues about your characters identity. You also get a couple of neat features to boot, too.</p>
+      <div class="input-field col s5 center-align">
+        <select  material-select
+          ng-model="character.background"
+          ng-init="character.background = character.background || backgrounds[0]">
+          <option ng-repeat="background in backgrounds">{{background}}</option>
+        </select>
+        <label>Backgrounds</label>
+      </div>
+
+      <div class="button col l12">
+        <button class="btn next right"
+                ng-click="finishedState('background')">Next</button>
+        <button class="btn right"
+                ng-click="toState('details')">Previous</button>
+      </div>
+    </div>
   </div>
-  <div class="response col l8">
+  <div class="response col l7">
     Stuff there
   </div>
 </div>

@@ -102,9 +102,9 @@
             }
           })
 
-          .state('create/name', {
-            url:'/create/:id/name',
-            templateUrl: baseUrl + 'creation/name/index.ng.html',
+          .state('create/details', {
+            url:'/create/:id/details',
+            templateUrl: baseUrl + 'creation/details/index.ng.html',
             controller: 'createCtrl',
             resolve: {
               "currentUser": ["$meteor", function($meteor) {
@@ -123,10 +123,21 @@
               }]
             }
           })
-          
+
           .state('create/background', {
             url:'/create/:id/background',
             templateUrl: baseUrl + 'creation/background/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+
+          .state('create/equipment', {
+            url:'/create/:id/equipment',
+            templateUrl: baseUrl + 'creation/equipment/index.ng.html',
             controller: 'createCtrl',
             resolve: {
               "currentUser": ["$meteor", function($meteor) {

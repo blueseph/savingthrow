@@ -4,9 +4,8 @@
     <div class="class col l12">
       <p>Your race gives you a few interesting characteristics, like bonus stats, darkvision, etc.</p>
       <div class="input-field col s5 center-align">
-        <select  material-select watch
-          ng-model="character.race"
-          ng-init="character.race = character.race || races[0]">
+        <select  material-select
+          ng-model="character.race">
           <option ng-repeat="race in races">{{race}}</option>
         </select>
         <label>Standard Races</label>

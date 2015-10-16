@@ -11,10 +11,12 @@
                 createCtrl]);
 
     function createCtrl($scope, $location, $meteor, $stateParams, $rootScope) {
-      $scope.workflow = ['race', 'class', 'name', 'ability', 'background'];
+      $scope.workflow = ['race', 'class', 'background', 'details', 'ability', 'equipment', 'spells', 'misc'];
 
       $scope.races = ['Dwarf', 'Elf', 'Halfing', 'Human', 'Dragonborn', 'Gnome', 'Half-elf', 'Orc', 'Tiefling', 'Aasimar [DMG]', 'Aarakocra [EE]', 'Genasi [EE]', 'Goliath [EE]',
                       'Changeling [UA]', 'Shifter [UA]', 'Warforged [UA]', 'Minotaur [UA]'];
+
+      $scope.proficiencies = [ 'Acrobatics', 'Animal Handling', 'Arcana', 'Athletics', 'Deception', 'History', 'Insight', 'Intimidation', 'Investigation', 'Medicine', 'Nature', 'Perception', 'Performance', 'Persuasion', 'Religion', 'Sleight of Hand', 'Survival', 'Stealth'];
 
       $scope.subraces = {
         'Dwarf': ['Hill', 'Mountain'],
@@ -41,8 +43,39 @@
         'Wizard'
       ];
 
+      $scope.backgrounds = [
+        'Acolyte',
+        'Charlatan',
+        'Criminal',
+        'Spy',
+        'Entertainer',
+        'Gladiator',
+        'Folk Hero',
+        'Guild Artisan',
+        'Guild Merchant',
+        'Hermit',
+        'Noble',
+        'Knight',
+        'Outlander',
+        'Sage',
+        'Sailor',
+        'Pirate',
+        'Soldier',
+        'Urchin'
+
+      ];
+
       $scope.hasSubrace = function(race) {
         return !_.isUndefined($scope.subraces[race]);
+      };
+
+      $scope.finishedState = function(state) {
+        var char = $scope.character;
+        var toState = $scope.workflow[$scope.workflow.indexOf(state)+1];
+
+        char.status = char.status || [];
+        char.status.push(state);
+        $location.path(basePath + toState);
       };
 
       $scope.selectedRace = function() {
@@ -59,23 +92,11 @@
           delete char.subrace;
         }
 
-        console.log(error);
         if (!error) {
-          char.status = char.status || [];
-          char.status.push('char');
-          $location.path(basePath + 'class');
+          $scope.finishedState('race');
         }
       };
 
-      $scope.finishedState = function(state) {
-        var char = $scope.character;
-        var toState = $scope.workflow[$scope.workflow.indexOf(state)+1];
-        console.log(char, toState);
-
-        char.status = char.status || [];
-        char.status.push(state);
-        $location.path(basePath + toState);
-      };
 
       $scope.toState = function(state) {
         var char = $scope.character;
@@ -85,9 +106,10 @@
 
       $scope.determineState = function(character) {
         var locationToGo;
-        if (!_.contains(character.status, 'race')) { locationToGo = 'race'; }
-        if (!_.contains(character.status, 'class') && _.isUndefined(locationToGo)) { locationToGo = 'class'; }
-        if (!_.contains(character.status, 'name') && _.isUndefined(locationToGo)) { locationToGo = 'name'; }
+
+        _.each($scope.workflow, function(state) {
+          if (!_.contains(character.status, state) && _.isUndefined(locationToGo)) { locationToGo = state; }
+        });
 
         $location.path(basePath + locationToGo);
       };
