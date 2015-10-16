@@ -1,0 +1,22 @@
+<div class="row" ng-controller="createCtrl as cc">
+  <div class="entry col l5">
+    <h5>Let's give this character a name</h5>
+    <div class="class col l12">
+      <div class="input-field col s5 center-align">
+        <input type="text"
+        ng-model="character.name">
+        <label>Character Name</label>
+      </div>
+    </div>
+
+    <div class="button col l12">
+      <button class="btn next right"
+              ng-click="finishedState('name')">Next</button>
+      <button class="btn right"
+              ng-click="toState('class')">Previous</button>
+    </div>
+  </div>
+  <div class="response col l7">
+    Class specific things would go here eventually
+  </div>
+</div>

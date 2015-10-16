@@ -11,6 +11,8 @@
                 createCtrl]);
 
     function createCtrl($scope, $location, $meteor, $stateParams, $rootScope) {
+      $scope.workflow = ['race', 'class', 'name', 'ability', 'background'];
+
       $scope.races = ['Dwarf', 'Elf', 'Halfing', 'Human', 'Dragonborn', 'Gnome', 'Half-elf', 'Orc', 'Tiefling', 'Aasimar [DMG]', 'Aarakocra [EE]', 'Genasi [EE]', 'Goliath [EE]',
                       'Changeling [UA]', 'Shifter [UA]', 'Warforged [UA]', 'Minotaur [UA]'];
 
@@ -57,13 +59,27 @@
           delete char.subrace;
         }
 
+        console.log(error);
         if (!error) {
-          char.status = ['race'];
+          char.status = char.status || [];
+          char.status.push('char');
           $location.path(basePath + 'class');
         }
       };
 
+      $scope.finishedState = function(state) {
+        var char = $scope.character;
+        var toState = $scope.workflow[$scope.workflow.indexOf(state)+1];
+        console.log(char, toState);
+
+        char.status = char.status || [];
+        char.status.push(state);
+        $location.path(basePath + toState);
+      };
+
       $scope.toState = function(state) {
+        var char = $scope.character;
+
         $location.path(basePath + state);
       };
 
@@ -71,6 +87,7 @@
         var locationToGo;
         if (!_.contains(character.status, 'race')) { locationToGo = 'race'; }
         if (!_.contains(character.status, 'class') && _.isUndefined(locationToGo)) { locationToGo = 'class'; }
+        if (!_.contains(character.status, 'name') && _.isUndefined(locationToGo)) { locationToGo = 'name'; }
 
         $location.path(basePath + locationToGo);
       };

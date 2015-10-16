@@ -6,7 +6,7 @@
       <div class="input-field col s5 center-align">
         <select  material-select watch
           ng-model="character.class"
-          ng-init="character.class = classes[0]">
+          ng-init="character.class = character.class || classes[0]">
           <option ng-repeat="class in classes">{{class}}</option>
         </select>
         <label>Standard Classes</label>
@@ -14,10 +14,10 @@
     </div>
 
     <div class="button col l12">
+      <button class="btn next right"
+              ng-click="finishedState('class')">Next</button>
       <button class="btn right"
               ng-click="toState('race')">Previous</button>
-      <button class="btn right"
-              ng-click="selectedRace()">Next</button>
     </div>
   </div>
   <div class="response col l7">

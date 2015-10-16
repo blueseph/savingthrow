@@ -6,7 +6,7 @@
       <div class="input-field col s5 center-align">
         <select  material-select watch
           ng-model="character.race"
-          ng-init="character.race = races[0]">
+          ng-init="character.race = character.race || races[0]">
           <option ng-repeat="race in races">{{race}}</option>
         </select>
         <label>Standard Races</label>
@@ -20,7 +20,7 @@
            <div class="input-field col s5 center-align">
              <select  material-select watch
                ng-model="character.subrace"
-               ng-init="character.race = subraces[character.race][0]">
+               ng-init="character.subrace = character.subrace || subraces[character.race][0]">
                <option ng-repeat="race in subraces[character.race]">{{race}}</option>
              </select>
              <label>Subraces for {{character.race}}</label>

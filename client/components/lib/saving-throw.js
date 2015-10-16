@@ -101,6 +101,39 @@
               }]
             }
           })
+
+          .state('create/name', {
+            url:'/create/:id/name',
+            templateUrl: baseUrl + 'creation/name/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+
+          .state('create/ability', {
+            url:'/create/:id/ability',
+            templateUrl: baseUrl + 'creation/ability/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+          
+          .state('create/background', {
+            url:'/create/:id/background',
+            templateUrl: baseUrl + 'creation/background/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
           ;
 
           $urlRouterProvider.otherwise("/");
