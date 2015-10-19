@@ -2,14 +2,16 @@
   .wrapper {
 
     .entry, .response {
-      height: 100%;
+      height: calc(100vh - 64px);
       padding: 50px;
       display: flex;
-      align-items: center;
     }
 
     .entry {
+      align-items: center;
       flex-direction: column;
+      border-right: 1px solid #777;
+      box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.16);
 
       .class, .subclass {
         margin-top: 2rem;
@@ -28,6 +30,11 @@
         pointer-events: none;
       }
 
+      .entryContent {
+        width: 100%;
+        flex: 1;
+      }
+
       button {
         margin-top: 3rem;
         background: #3498DB;
@@ -35,7 +42,25 @@
     }
 
     .response {
-      background: #aaa;
+      background: #EBEBEB;
+      z-index: -1;
+      position: relative;
+
+      .cliff {
+        position: absolute;
+        background: #fff;
+        right: 30px;
+        top: 15px;
+        padding: 25px;
+
+        .important {
+          font-size: 1.4em;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: .75rem;
+        }
+      }
+
     }
   }
 }

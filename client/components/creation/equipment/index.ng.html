@@ -1,16 +1,18 @@
 <div class="row" ng-controller="createCtrl as cc">
   <div class="entry col l5">
-    <h5>{{character.class}}s and {{character.background}}s get some cool starting equipment.</h5>
-    <div class="class col l12">
-      <p>You get some stuff automatically, and you have to pick some things. Select your loadout below.</p>
-      I'm gonna be completely honest this is goign to be literally awful to code out ugh fuck my life.
+    <div class="entryContent">
+      <h5>{{character.class}}s and {{character.background}}s get some cool starting equipment.</h5>
+      <div class="class col l12">
+        <p>You get some stuff automatically, and you have to pick some things. Select your loadout below.</p>
+        I'm gonna be completely honest this is goign to be literally awful to code out ugh fuck my life.
+      </div>
     </div>
 
     <div class="button col l12">
       <button class="btn next right"
               ng-click="finishedState('equipment')">Next</button>
       <button class="btn right"
-              ng-click="toState('race')">Previous</button>
+              ng-click="toState('ability')">Previous</button>
     </div>
   </div>
   <div class="response col l7">

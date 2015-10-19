@@ -1,58 +1,61 @@
 <div class="row" ng-controller="createCtrl as cc">
   <div class="entry col l5">
-    <h5>Next, let's choose your class</h5>
-    <div class="class col l12">
-      <p>Your class broadly dictates your vocation, talents, and tactics</p>
-      <div class="input-field col s5 center-align charSelect">
-        <select  material-select
-          name="charClass"
-          ng-model="character.class">
-          <option ng-repeat="class in classes">{{class}}</option>
-        </select>
-        <label>Standard Classes</label>
-      </div>
-    </div>
+    <div class="entryContent">
 
-    <div ng-show="character.class">
-      <p>
-        Good choice. You can now pick a couple of proficiencies and your saving throw
-      </p>
-
-      <div class="profs">
-        <h6><strong>Proficiencies</strong></h6>
-        <div class="prof col s12 l4"
-             ng-repeat="prof in proficiencies">
-          <input type="checkbox" id="{{prof}}">
-          <label for="{{prof}}">{{prof}}</label>
+      <h5>Next, let's choose your class</h5>
+      <div class="class col l12">
+        <p>Your class broadly dictates your vocation, talents, and tactics</p>
+        <div class="input-field col s5 center-align charSelect">
+          <select  material-select
+            name="charClass"
+            ng-model="character.class">
+            <option ng-repeat="class in classes">{{class}}</option>
+          </select>
+          <label>Standard Classes</label>
         </div>
       </div>
 
-      <div class="saving">
-        <h6><strong>Saving throw</strong></h6>
+      <div ng-show="character.class">
         <p>
-          <input name="group1" type="radio" id="str" />
-          <label for="str">Strength</label>
+          Good choice. You can now pick a couple of proficiencies and your saving throw
         </p>
-        <p>
-          <input name="group1" type="radio" id="dex" />
-          <label for="dex">Dexterity</label>
-        </p>
-        <p>
-          <input name="group1" type="radio" id="con" />
-          <label for="con">Consitution</label>
-        </p>
-        <p>
-          <input name="group1" type="radio" id="int" />
-          <label for="int">Intelligence</label>
-        </p>
-        <p>
-          <input name="group1" type="radio" id="wis" />
-          <label for="wis">Wisdom</label>
-        </p>
-        <p>
-          <input name="group1" type="radio" id="cha" />
-          <label for="cha">Charisma</label>
-        </p>
+
+        <div class="profs">
+          <h6><strong>Proficiencies</strong></h6>
+          <div class="prof col s12 l4"
+               ng-repeat="prof in proficiencies">
+            <input type="checkbox" id="{{prof}}">
+            <label for="{{prof}}">{{prof}}</label>
+          </div>
+        </div>
+
+        <div class="saving">
+          <h6><strong>Saving throw</strong></h6>
+          <p>
+            <input name="group1" type="radio" id="str" />
+            <label for="str">Strength</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="dex" />
+            <label for="dex">Dexterity</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="con" />
+            <label for="con">Consitution</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="int" />
+            <label for="int">Intelligence</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="wis" />
+            <label for="wis">Wisdom</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="cha" />
+            <label for="cha">Charisma</label>
+          </p>
+        </div>
       </div>
     </div>
 

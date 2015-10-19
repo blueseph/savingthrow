@@ -5,7 +5,8 @@
     .module("saving-throw", ['angular-meteor',
       'ui.materialize',
       'ui.router',
-      'ui.router'
+      'ui.router',
+      "ngSanitize",
     ])
     .config(
       ["$urlRouterProvider",

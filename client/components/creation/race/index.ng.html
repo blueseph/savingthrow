@@ -1,30 +1,33 @@
 <div class="row" ng-controller="createCtrl as cc">
   <div class="entry col l5">
-    <h5>Let's start by picking your race</h5>
-    <div class="class col l12">
-      <p>Your race gives you a few interesting characteristics, like bonus stats, darkvision, etc.</p>
-      <div class="input-field col s5 center-align">
-        <select  material-select
-          ng-model="character.race">
-          <option ng-repeat="race in races">{{race}}</option>
-        </select>
-        <label>Standard Races</label>
+    <div class="entryContent">
+      <h5>Let's start by picking your race</h5>
+      <div class="class col l12">
+        <p>Your race gives you a few interesting characteristics, like bonus stats, darkvision, etc.</p>
+        <div class="input-field col s5 center-align">
+          <select  material-select
+            ng-change="removeSubrace()"
+            ng-model="character.race">
+            <option ng-repeat="race in races">{{race}}</option>
+          </select>
+          <label>Standard Races</label>
+        </div>
       </div>
-    </div>
 
-    <div class="subclass col l12"
-         ng-show="hasSubrace(character.race)">
-         <p>
-           Your race has subraces, which provide extra characteristics.
-           <div class="input-field col s5 center-align">
-             <select  material-select watch
-               ng-model="character.subrace"
-               ng-init="character.subrace = character.subrace || subraces[character.race][0]">
-               <option ng-repeat="race in subraces[character.race]">{{race}}</option>
-             </select>
-             <label>Subraces for {{character.race}}</label>
-           </div>
-         </p>
+      <div class="subclass col l12"
+           ng-show="hasSubrace(character.race)">
+           <p>
+             Your race has subraces, which provide extra characteristics.
+             <div class="input-field col s5 center-align">
+               <select  material-select watch
+                 ng-model="character.subrace"
+                 ng-init="character.subrace = character.subrace || subraces[character.race][0]">
+                 <option ng-repeat="race in subraces[character.race]">{{race}}</option>
+               </select>
+               <label>Subraces for {{character.race}}</label>
+             </div>
+           </p>
+      </div>
     </div>
 
     <div class="button col l12">
@@ -33,6 +36,30 @@
     </div>
   </div>
   <div class="response col l7">
-    Race Stuff
+    <div class="default"
+         ng-show="!character.race"
+         ng-bind-html="content['en-us'].pages.create.race.Entry">
+    </div>
+    <div class="selected"
+         ng-show="character.race">
+      <div class="large"
+           ng-bind-html="content['en-us'].pages.create.race[character.race].large">
+      </div>
+      <div class="large"
+           ng-show="character.subrace"
+           ng-bind-html="content['en-us'].pages.create.race[character.race].subraces[character.subrace].large">
+      </div>
+      <div class="cliff">
+        <div class="important">The Important Bits</div>
+        <div class="notes"
+        ng-show="!character.subrace"
+        ng-bind-html="content['en-us'].pages.create.race[character.race].cliff">
+        </div>
+        <div class="note"
+        ng-show="character.subrace"
+        ng-bind-html="content['en-us'].pages.create.race[character.race].subraces[character.subrace].cliff">
+        </div>
+      </div>
+    </div>
   </div>
 </div>

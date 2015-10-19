@@ -8,62 +8,26 @@
                "$meteor",
                "$stateParams",
                "$rootScope",
+               "$sce",
                 createCtrl]);
 
-    function createCtrl($scope, $location, $meteor, $stateParams, $rootScope) {
+    function createCtrl($scope, $location, $meteor, $stateParams, $rootScope, $sce) {
       $scope.workflow = ['race', 'class', 'background', 'details', 'ability', 'equipment', 'spells', 'misc'];
+      $scope.content = $meteor.collection(Content)[0];
 
-      $scope.races = ['Dwarf', 'Elf', 'Halfing', 'Human', 'Dragonborn', 'Gnome', 'Half-elf', 'Orc', 'Tiefling', 'Aasimar [DMG]', 'Aarakocra [EE]', 'Genasi [EE]', 'Goliath [EE]',
-                      'Changeling [UA]', 'Shifter [UA]', 'Warforged [UA]', 'Minotaur [UA]'];
+      $scope.races = $scope.content['en-us'].races;
 
-      $scope.proficiencies = [ 'Acrobatics', 'Animal Handling', 'Arcana', 'Athletics', 'Deception', 'History', 'Insight', 'Intimidation', 'Investigation', 'Medicine', 'Nature', 'Perception', 'Performance', 'Persuasion', 'Religion', 'Sleight of Hand', 'Survival', 'Stealth'];
+      $scope.proficiencies = $scope.content['en-us'].proficiencies;
 
-      $scope.subraces = {
-        'Dwarf': ['Hill', 'Mountain'],
-        'Elf': ['High', 'Wood', 'Drow', 'Eladrin [DMG]'],
-        'Halfling': ['Lightfoot', 'Stout'],
-        'Human': ['Standard', 'Variant'],
-        'Gnome': ['Forest', 'Rock', 'Deep [EE]'],
-        'Genasi [EE]': ['Air', 'Earth', 'Fire', 'Water'],
-        'Shifter [UA]': ['Beasthide', 'Cliffwalk', 'Longtooth', 'Razorclaw', 'Wildhunt']
+      $scope.subraces = $scope.content['en-us'].subraces;
+
+      $scope.classes = $scope.content['en-us'].classes;
+
+      $scope.backgrounds = $scope.content['en-us'].backgrounds;
+
+      $scope.removeSubrace = function() {
+          delete $scope.character.subrace;
       };
-
-      $scope.classes = [
-        'Barbarian',
-        'Bard',
-        'Cleric',
-        'Druid',
-        'Fighter',
-        'Monk',
-        'Paladin',
-        'Ranger',
-        'Rogue',
-        'Sorcerer',
-        'Warlock',
-        'Wizard'
-      ];
-
-      $scope.backgrounds = [
-        'Acolyte',
-        'Charlatan',
-        'Criminal',
-        'Spy',
-        'Entertainer',
-        'Gladiator',
-        'Folk Hero',
-        'Guild Artisan',
-        'Guild Merchant',
-        'Hermit',
-        'Noble',
-        'Knight',
-        'Outlander',
-        'Sage',
-        'Sailor',
-        'Pirate',
-        'Soldier',
-        'Urchin'
-
-      ];
 
       $scope.hasSubrace = function(race) {
         return !_.isUndefined($scope.subraces[race]);
@@ -87,9 +51,6 @@
             Materialize.toast('Please select a subrace', 4000, 'failure-toast');
             error = true;
           }
-        } else {
-          //edgecase someone selected a subrace, then changed to a class w/o subraces
-          delete char.subrace;
         }
 
         if (!error) {
