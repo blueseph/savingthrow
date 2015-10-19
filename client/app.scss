@@ -24,6 +24,10 @@ nav {
 
   .wrapper {
     flex: 1;
+
+    .row {
+      margin-bottom: 0;
+    }
   }
 }
 

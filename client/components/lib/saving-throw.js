@@ -166,5 +166,18 @@
           $state.go('internal-server-error');
       }
     });
+
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+      if (toState.name == 'login' || toState.name == 'register')
+      {
+        if (event && event.targetScope && event.targetScope.currentUser)
+        {
+          event.preventDefault();
+          $state.go('characters');
+        }
+      }
+    });
+
+
   }]);
 }());

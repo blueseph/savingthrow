@@ -4,7 +4,7 @@
       <a href="/" class="brand-logo">Saving Throw</a>
       <div ng-hide="isLoginArea()">
         <ul class="right bottom-on-med-and-down"
-            ng-hide="isEntry()">
+            ng-show="!isEntry()">
           <li><a href="/characters">Characters</a></li>
           <li><a href="sass.html">Filler</a></li>
           <li><a href="/settings">Settings</a></li>
@@ -25,7 +25,9 @@
       </div>
 
     </div>
-    <footer class="clearfix container">
+    <footer class="clearfix container"
+            ng-controller="navCtrl as nc"
+            ng-show="isEntry()">
       <div class="links left">
         <ul>
           <li><a href="/privacy">Privacy</a></li>

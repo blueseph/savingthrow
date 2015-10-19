@@ -8,6 +8,7 @@
                 navCtrl]);
 
     function navCtrl($scope, $location) {
+
       $scope.isEntry = function() {
 
         if ($location.path() === '/') {
@@ -35,6 +36,8 @@
         Meteor.logout();
         $location.path('/');
       };
+
     }
+
 
 })();
