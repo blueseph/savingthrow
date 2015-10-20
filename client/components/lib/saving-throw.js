@@ -169,7 +169,7 @@
     });
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-      if (toState.name == 'login' || toState.name == 'register')
+      if (toState.name == 'login' || toState.name == 'register' || toState.name == 'home')
       {
         if (event && event.targetScope && event.targetScope.currentUser)
         {
