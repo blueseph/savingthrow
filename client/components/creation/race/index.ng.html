@@ -42,13 +42,6 @@
     </div>
     <div class="selected"
          ng-show="character.race">
-      <div class="large"
-           ng-bind-html="content['en-us'].pages.create.race[character.race].large">
-      </div>
-      <div class="large"
-           ng-show="character.subrace"
-           ng-bind-html="content['en-us'].pages.create.race[character.race].subraces[character.subrace].large">
-      </div>
       <div class="cliff">
         <div class="important">The Important Bits</div>
         <div class="notes"
@@ -59,6 +52,13 @@
         ng-show="character.subrace"
         ng-bind-html="content['en-us'].pages.create.race[character.race].subraces[character.subrace].cliff">
         </div>
+      </div>
+      <div class="large"
+           ng-bind-html="content['en-us'].pages.create.race[character.race].large">
+      </div>
+      <div class="large"
+           ng-show="character.subrace"
+           ng-bind-html="content['en-us'].pages.create.race[character.race].subraces[character.subrace].large">
       </div>
     </div>
   </div>

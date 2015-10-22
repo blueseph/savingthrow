@@ -43,14 +43,18 @@
 
     .response {
       background: #EBEBEB;
-      z-index: -1;
       position: relative;
+      overflow: auto;
+      padding-bottom: 25px;
+
+      .large {
+        margin-bottom: 25px;
+      }
 
       .cliff {
-        position: absolute;
+        float: right;
         background: #fff;
-        right: 30px;
-        top: 15px;
+        margin: 15px 30px;
         padding: 25px;
 
         .important {
@@ -58,6 +62,11 @@
           font-weight: bold;
           text-align: center;
           margin-bottom: .75rem;
+        }
+
+        .improved {
+          color: #9AB88E;
+          font-weight: bold;
         }
       }
 

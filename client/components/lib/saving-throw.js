@@ -169,6 +169,7 @@
     });
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+      //if a user is logged in and visiting non-logged in states, redirect them to characters.
       if (toState.name == 'login' || toState.name == 'register' || toState.name == 'home')
       {
         if (event && event.targetScope && event.targetScope.currentUser)

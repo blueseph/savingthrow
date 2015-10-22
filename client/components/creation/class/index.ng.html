@@ -20,14 +20,14 @@
           Good choice. You can now pick a couple of proficiencies and your saving throw
         </p>
 
-        <div class="profs">
+        <form class="profs">
           <h6><strong>Proficiencies</strong></h6>
           <div class="prof col s12 l4"
                ng-repeat="prof in proficiencies">
             <input type="checkbox" id="{{prof}}">
             <label for="{{prof}}">{{prof}}</label>
           </div>
-        </div>
+        </form>
 
         <div class="saving">
           <h6><strong>Saving throw</strong></h6>

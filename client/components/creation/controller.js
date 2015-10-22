@@ -14,6 +14,7 @@
     function createCtrl($scope, $location, $meteor, $stateParams, $rootScope, $sce) {
       $scope.workflow = ['race', 'class', 'background', 'details', 'ability', 'equipment', 'spells', 'misc'];
       $scope.content = $meteor.collection(Content)[0];
+      $scope.items = $meteor.collection(Items);
 
       $scope.races = $scope.content['en-us'].races;
 
