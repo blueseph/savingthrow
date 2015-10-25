@@ -31,6 +31,10 @@
         pointer-events: none;
       }
 
+      .ability label {
+        width: 100%;
+      }
+
       .prof label , .saving label  {
         pointer-events: inherit;
       }

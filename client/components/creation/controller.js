@@ -52,27 +52,102 @@
 
       $scope.finishedState = function(state) {
         var char = $scope.character;
-        var toState = $scope.workflow[$scope.workflow.indexOf(state)+1];
+        var error = $scope.validateState(state);
 
-        char.status = char.status || [];
-        char.status.push(state);
-        $location.path(basePath + toState);
+        if (error.hasError) {
+          if (error.errorMsg !== '') {
+            Materialize.toast(error.errorMsg, 4000, error.errorType + '-toast');
+          }
+        } else {
+          var toState = $scope.workflow[$scope.workflow.indexOf(state)+1];
+
+          char.status = char.status || [];
+          char.status.push(state);
+          $location.path(basePath + toState);
+        }
       };
 
-      $scope.selectedRace = function() {
-        //change to let error in es6
-        var error = false;
+      $scope.validateState = function(state) {
         var char = $scope.character;
-        if ($scope.hasSubrace(char.race)) {
-          if (_.isUndefined(char.subrace)) {
-            Materialize.toast('Please select a subrace', 4000, 'failure-toast');
-            error = true;
-          }
+        var error = {
+          hasError: false,
+          errorType: 'failure',
+          errorMsg: ''
+        };
+
+        switch (state) {
+          case 'race':
+            if (_.isUndefined(char.race)) {
+              error.hasError = true;
+              error.errorMsg = 'Please select a race';
+            }
+
+            if (!_.isUndefined(char.race) && $scope.hasSubrace(char.race)) {
+              if (_.isUndefined(char.subrace)) {
+                error.hasError = true;
+                error.errorMsg = 'Please select a subrace';
+              }
+            }
+
+            break;
+
+          case 'class':
+            if (_.isUndefined(char.class)) {
+              error.hasError = true;
+              error.errorMsg = 'Please select a class';
+            }
+
+            if (char.class)
+            {
+              var count = 0;
+
+              _.each($scope.character.proficiencies, function(prof, _name) {
+                if (prof) { count++; }
+              });
+
+              if (count < 3) {
+                error.hasError = true;
+                error.errorType = 'info';
+                error.errorMsg = 'You can select up to three proficiencies';
+              } else {
+                if (!char.savingthrow) {
+                  error.hasError = true;
+                  error.errorMsg = 'Please select a saving throw';
+                }
+              }
+
+            }
+
+
+            break;
+
+          case 'background':
+            if (_.isUndefined(char.background)) {
+              error.hasError = true;
+              error.errorMsg = 'Please select a background';
+            }
+            break;
+
+          case 'details':
+            if (_.isUndefined(char.alignment)) {
+              error.hasError = true;
+              error.errorMsg = 'Please select an alignment';
+            }
+            break;
+
+          case 'ability':
+          if  (_.isUndefined(char.stats.strength) ||
+               _.isUndefined(char.stats.dexterity) ||
+               _.isUndefined(char.stats.constitution) ||
+               _.isUndefined(char.stats.intelligence) ||
+               _.isUndefined(char.stats.wisdom) ||
+               _.isUndefined(char.stats.charisma) ) {
+                 error.hasError = true;
+               }
+
         }
 
-        if (!error) {
-          $scope.finishedState('race');
-        }
+        return error;
       };
 
       $scope.backup = function() {

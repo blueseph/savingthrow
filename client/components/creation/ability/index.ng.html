@@ -4,58 +4,70 @@
 
       <h5>We need to set your base ability scores now</h5>
       <p>Don't worry about racial bonuses or anything like that. They'll get handled automatically.</p>
-      <div class="class col l12">
+      <div class="ability col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
+          class="validate"
+          pattern="^([0-9]|[0-1][0-9]|20)$"
           ng-model="character.stats.strength"
           ng-focus="swapAbilityText('Strength')"
           ng-blur="swapAbilityText('Default')">
-          <label>Strength</label>
+          <label data-error="Please enter a number less than 20">Strength</label>
         </div>
       </div>
-      <div class="class col l12">
+      <div class="ability col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
+          class="validate"
+          pattern="^([0-9]|[0-1][0-9]|20)$"
           ng-model="character.stats.dexterity"
           ng-focus="swapAbilityText('Dexterity')"
           ng-blur="swapAbilityText('Default')">
-          <label>Dexterity</label>
+          <label data-error="Please enter a number less than 20">Dexterity</label>
         </div>
       </div>
-      <div class="class col l12">
+      <div class="ability col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
+          class="validate"
+          pattern="^([0-9]|[0-1][0-9]|20)$"
           ng-model="character.stats.constitution"
           ng-focus="swapAbilityText('Constitution')"
           ng-blur="swapAbilityText('Default')">
-          <label>Constitution</label>
+          <label data-error="Please enter a number less than 20">Constitution</label>
         </div>
       </div>
-      <div class="class col l12">
+      <div class="ability col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
+          class="validate"
+          pattern="^([0-9]|[0-1][0-9]|20)$"
           ng-model="character.stats.intelligence"
           ng-focus="swapAbilityText('Intelligence')"
           ng-blur="swapAbilityText('Default')">
-          <label>Intelligence</label>
+          <label data-error="Please enter a number less than 20">Intelligence</label>
         </div>
       </div>
-      <div class="class col l12">
+      <div class="ability col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
+          class="validate"
+          pattern="^([0-9]|[0-1][0-9]|20)$"
           ng-model="character.stats.wisdom"
           ng-focus="swapAbilityText('Wisdom')"
           ng-blur="swapAbilityText('Default')">
-          <label>Wisdom</label>
+          <label data-error="Please enter a number less than 20">Wisdom</label>
         </div>
       </div>
-      <div class="class col l12">
+      <div class="ability col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
+          class="validate"
+          pattern="^([0-9]|[0-1][0-9]|20)$"
           ng-model="character.stats.charisma"
           ng-focus="swapAbilityText('Charisma')"
           ng-blur="swapAbilityText('Default')">
-          <label>Charisma</label>
+          <label data-error="Please enter a number less than 20">Charisma</label>
         </div>
       </div>
     </div>

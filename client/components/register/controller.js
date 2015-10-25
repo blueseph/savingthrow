@@ -31,7 +31,7 @@
           Materialize.toast('Error creating account: ' + err.reason, 4000, 'failure-toast');
         });
       } else {
-        Materialize.toast('Error creating account: The form is not filled out', 400, 'failure-toast');
+        Materialize.toast('Error creating account: The form is not filled out', 4000, 'failure-toast');
       }
 
     };
