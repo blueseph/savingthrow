@@ -15,6 +15,13 @@
       <div class="class col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
+          ng-model="character.age">
+          <label>Age</label>
+        </div>
+      </div>
+      <div class="class col l12">
+        <div class="input-field col s5 center-align">
+          <input type="text"
           ng-model="character.sex">
           <label>Sex</label>
         </div>
@@ -35,8 +42,11 @@
       </div>
       <div class="class col l12">
         <div class="input-field col s5 center-align">
-          <input type="text"
-          ng-model="character.alignment">
+          <select  material-select
+            name="charAlignment"
+            ng-model="character.alignment">
+            <option ng-repeat="alignment in alignments">{{alignment}}</option>
+          </select>
           <label>Alignment</label>
         </div>
       </div>
@@ -46,7 +56,7 @@
       <button class="btn next right"
               ng-click="finishedState('details')">Next</button>
       <button class="btn right"
-              ng-click="toState('background')">Previous</button>
+              ng-click="backup()">Previous</button>
     </div>
   </div>
   <div class="response col l7">

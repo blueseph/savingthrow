@@ -13,23 +13,33 @@
 
     <div class="characters">
       <div class="character clearfix"
-           ng-repeat="character in characters | filter:searchText"
-           ng-click="selectCharacter(character._id)">
+           ng-repeat="char in characters | filter:searchText"
+           ng-class="char._id == character.$$id ? 'selected': '' "
+           ng-click="selectCharacter(char._id)">
            <div class="name">
-             {{character.name}}
+             {{char.name}}
            </div>
            <div class="race">
-            {{character.race}}
+            {{char.race}}
            </div>
            <div class="alignment right">
-            {{character.alignment}}
+            {{char.alignment}}
            </div>
       </div>
     </div>
 
   </div>
   <div class="rightBar col s12">
-      <h2>{{character.name}}</h2>
+        <p>
+          alright here would go all the neat stuff that told u about ur champ
+        </p>
+
+        <p>
+          like right now ur strength is {{character.stats.strength}}
+        </p>
+        <p>
+          and i mean ur wis is {{character.stats.wisdom}} but really who cares lol
+        </p>
   </div>
 
 </div>

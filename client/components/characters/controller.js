@@ -12,12 +12,16 @@
 
     function charCtrl($scope, $location, $meteor, $stateParams, $rootScope) {
 
+      $scope.log = function(character) {
+        console.log(character);
+      };
+
       $scope.characters = $meteor.collection(Characters).subscribe('characters');
 
       if ($stateParams.id) {
-        var char = $scope.character;
+        $scope.character = $meteor.object(Characters, $stateParams.id).subscribe('characters');
 
-        char = $meteor.object(Characters, $stateParams.id).subscribe('characters');
+        var char = $scope.character;
 
         if (char.newCharacter) {
           $location.path('/create/' + char._id);

@@ -20,40 +20,28 @@
           Good choice. You can now pick a couple of proficiencies and your saving throw
         </p>
 
-        <form class="profs">
+        <div class="profs">
           <h6><strong>Proficiencies</strong></h6>
           <div class="prof col s12 l4"
-               ng-repeat="prof in proficiencies">
-            <input type="checkbox" id="{{prof}}">
-            <label for="{{prof}}">{{prof}}</label>
+               ng-repeat="(prof, name) in proficiencies">
+            <input type="checkbox" id="{{name}}" ng-model="character.proficiencies[name]"
+                   ng-disabled="profDisabled(name)">
+            <label for="{{name}}">{{name}}</label>
           </div>
-        </form>
+        </div>
+
+        <!-- there's some weird bug that breaks html here i dont know what it is or why it happens
+             so it requires a bunch of brs to actually do spacing. i am not happy about it. -->
+        <br><br><br><br><br><br><br>
+
 
         <div class="saving">
           <h6><strong>Saving throw</strong></h6>
-          <p>
-            <input name="group1" type="radio" id="str" />
-            <label for="str">Strength</label>
-          </p>
-          <p>
-            <input name="group1" type="radio" id="dex" />
-            <label for="dex">Dexterity</label>
-          </p>
-          <p>
-            <input name="group1" type="radio" id="con" />
-            <label for="con">Consitution</label>
-          </p>
-          <p>
-            <input name="group1" type="radio" id="int" />
-            <label for="int">Intelligence</label>
-          </p>
-          <p>
-            <input name="group1" type="radio" id="wis" />
-            <label for="wis">Wisdom</label>
-          </p>
-          <p>
-            <input name="group1" type="radio" id="cha" />
-            <label for="cha">Charisma</label>
+          <p class="col s12 l4"
+            ng-repeat="attribute in attributes">
+            <input name="saving" type="radio" id="{{attribute}}"
+                  ng-model="character.savingthrow" ng-value=attribute>
+            <label for="{{attribute}}">{{attribute}}</label>
           </p>
         </div>
       </div>
@@ -63,7 +51,7 @@
       <button class="btn next right"
               ng-click="finishedState('class')">Next</button>
       <button class="btn right"
-              ng-click="toState('race')">Previous</button>
+              ng-click="backup()">Previous</button>
     </div>
   </div>
   <div class="response col l7">

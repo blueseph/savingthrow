@@ -5,11 +5,24 @@
         <p>Your background provides important story cues about your characters identity. You also get a couple of neat features to boot, too.</p>
         <div class="input-field col s5 center-align">
           <select  material-select
-            ng-model="character.background"
-            ng-init="character.background = character.background || backgrounds[0]">
+            ng-model="character.background">
             <option ng-repeat="background in backgrounds">{{background}}</option>
           </select>
           <label>Backgrounds</label>
+        </div>
+
+        <div class="col l12"
+             ng-if="character.background">
+          <p>Great. You also got a could bonus proficiencies to boot!</p>
+          <div class="profs">
+            <h6><strong>Proficiencies</strong></h6>
+            <div class="prof col s12 l4"
+                 ng-repeat="(prof, name) in proficiencies">
+              <input type="checkbox" id="{{name}}" ng-model="character.proficiencies[name]"
+                     disabled="disabled">
+              <label for="{{name}}">{{name}}</label>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -18,7 +31,7 @@
         <button class="btn next right"
                 ng-click="finishedState('background')">Next</button>
         <button class="btn right"
-                ng-click="toState('class')">Previous</button>
+                ng-click="backup()">Previous</button>
     </div>
   </div>
   <div class="response col l7">

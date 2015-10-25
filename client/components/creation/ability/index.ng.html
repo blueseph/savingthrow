@@ -7,42 +7,54 @@
       <div class="class col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
-          ng-model="character.stats.strength">
+          ng-model="character.stats.strength"
+          ng-focus="swapAbilityText('Strength')"
+          ng-blur="swapAbilityText('Default')">
           <label>Strength</label>
         </div>
       </div>
       <div class="class col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
-          ng-model="character.stats.dexterity">
+          ng-model="character.stats.dexterity"
+          ng-focus="swapAbilityText('Dexterity')"
+          ng-blur="swapAbilityText('Default')">
           <label>Dexterity</label>
         </div>
       </div>
       <div class="class col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
-          ng-model="character.stats.consitution">
+          ng-model="character.stats.constitution"
+          ng-focus="swapAbilityText('Constitution')"
+          ng-blur="swapAbilityText('Default')">
           <label>Constitution</label>
         </div>
       </div>
       <div class="class col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
-          ng-model="character.stats.intelligence">
+          ng-model="character.stats.intelligence"
+          ng-focus="swapAbilityText('Intelligence')"
+          ng-blur="swapAbilityText('Default')">
           <label>Intelligence</label>
         </div>
       </div>
       <div class="class col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
-          ng-model="character.stats.wisdom">
+          ng-model="character.stats.wisdom"
+          ng-focus="swapAbilityText('Wisdom')"
+          ng-blur="swapAbilityText('Default')">
           <label>Wisdom</label>
         </div>
       </div>
       <div class="class col l12">
         <div class="input-field col s5 center-align">
           <input type="text"
-          ng-model="character.stats.charisma">
+          ng-model="character.stats.charisma"
+          ng-focus="swapAbilityText('Charisma')"
+          ng-blur="swapAbilityText('Default')">
           <label>Charisma</label>
         </div>
       </div>
@@ -52,10 +64,12 @@
       <button class="btn next right"
               ng-click="finishedState('ability')">Next</button>
       <button class="btn right"
-              ng-click="toState('class')">Previous</button>
+              ng-click="backup()">Previous</button>
     </div>
   </div>
   <div class="response col l7">
-    Stuff there
+    <div class="default"
+         ng-bind-html="abilityText">
+    </div>
   </div>
 </div>

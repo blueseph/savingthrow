@@ -11,6 +11,7 @@
       height: calc(100vh - 64px);
       padding: 0;
 
+
       .header {
         padding: 10px 15px;
 
@@ -27,6 +28,10 @@
 
       .characters {
         margin-top: 2rem;
+      }
+
+      .character.selected {
+        border-right: 8px solid #3498DB;
       }
 
       .character {
@@ -52,8 +57,14 @@
     }
 
     .rightBar {
-      padding: 15px;
       width: calc(100vw - 270px);
+      padding: 0;
+      margin-top: 5px;
+
+      .tabs {
+        background: #DDDDDD;
+        color: white;
+      }
     }
 
   }

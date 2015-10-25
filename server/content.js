@@ -5,10 +5,7 @@ var content =  {
     races: ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'Half-elf', 'Half-Orc', 'Tiefling', 'Aasimar [DMG]', 'Aarakocra [EE]', 'Genasi [EE]', 'Goliath [EE]',
                     'Changeling [UA]', 'Shifter [UA]', 'Warforged [UA]', 'Minotaur [UA]'],
     proficiencies: [ 'Acrobatics', 'Animal Handling', 'Arcana', 'Athletics', 'Deception', 'History', 'Insight', 'Intimidation', 'Investigation', 'Medicine', 'Nature', 'Perception', 'Performance', 'Persuasion', 'Religion', 'Sleight of Hand', 'Survival', 'Stealth'],
-    items: {
-      Glaive: 'A long, two handed pole with a single-edged blade on the end.',
-      Longsword: 'A long, double-edged blade capable of being held in both hands.',
-    },
+    attributes: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'],
     subraces:  {
       'Dwarf': ['Hill', 'Mountain'],
       'Elf': ['High', 'Wood', 'Drow', 'Eladrin [DMG]'],
@@ -21,6 +18,11 @@ var content =  {
     },
     classes: [ 'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'],
     backgrounds: [ 'Acolyte', 'Charlatan', 'Criminal', 'Spy', 'Entertainer', 'Gladiator', 'Folk Hero', 'Guild Artisan', 'Guild Merchant', 'Hermit', 'Noble', 'Knight', 'Outlander', 'Sage', 'Sailor', 'Pirate', 'Soldier', 'Urchin'],
+    alignments: ['Lawful Good' ,'Lawful Neutral', 'Lawful Evil', 'Neutral Good', 'True Neutral', 'Neutral Evil', 'Chaotic Good', 'Chaotic Neutral', 'Chaotic Evil'],
+    items: {
+      Glaive: 'A long, two handed pole with a single-edged blade on the end.',
+      Longsword: 'A long, double-edged blade capable of being held in both hands.',
+    },
     pages: {
       create: {
         race: {
@@ -89,8 +91,16 @@ var content =  {
               }
             }
           },
-
-        }
+        },
+        ability: {
+          Default: '<p>Characters in D&D have six abilities: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma. A character also has a score attached to each ability. Your ability score describes in broad terms your talent, training, and competence when doing things related to that ability. The higher the score, the better your character is with that ability. Your abilities, in many ways, act as your character\'s foundation and set the stage for your adventuring career.</p><p>A typical monster has the same six abilities and follows the same rules as a character for the abilities\' use, although a monster relies on its abilities far less than an adventurer does.</p><p>A score of 10 or 11 is average for a human adult. A score of 18 is the highest that a normal person usually reaches. Adventurers can have scores as high as 20, and monsters and divine beings can have scores as high as 30. </p>',
+          Strength: 'Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force. You typically use Strength to climb, jump, swim, strike a foe with a melee weapon, break down doors, lift gates, and burst restraints. Any character who fights in hand-to-hand combat can benefit from a high Strength score. Fighters and other warriors, therefore, prefer high Strength scores. <ul><li>1 (–5):  Morbidly weak, has significant trouble lifting own limbs</li><li>2-3 (–4):  Needs help to stand, can be knocked over by strong breezes</li><li>4-5 (–3):  Knocked off balance by swinging something dense</li><li>6-7 (–2):  Difficulty pushing an object of their weight</li><li>8-9 (–1):  Has trouble even lifting heavy objects</li><li>10-11 (0):  Can literally pull their own weight</li><li>12-13 (1):  Carries heavy objects for short distances</li><li>14-15 (2):  Visibly toned, throws small objects for long distances</li><li>16-17 (3):  Carries heavy objects with one arm</li><li>18-19 (4):  Can break objects like wood with bare hands</li><li>20-21 (5):  Able to out-wrestle a work animal or catch a falling person</li><li>22-23 (6):  Can pull very heavy objects at appreciable speeds</li><li>24-25 (7):  Pinnacle of brawn, able to out-lift several people</li></ul>',
+          Dexterity: '<p>Dexterity measures your character\'s physical agility, reflexes, balance, and poise. You typically use Dexterity to perform an acrobatic action, such as maintaining balance while moving across a precarious surface, contorting your body to wriggle through a tight space, striking a distant foe using a projectile, or slipping free from bindings.</p><p>Rogues and other characters who wear light armor prefer high Dexterity scores, since it helps them avoid enemy attacks. A character might also use Dexterity when making attacks with certain weapons: bows, slings, and the like. Any character who wants to react to danger quickly can benefit from a high Dexterity score.</p> ',
+          Constitution: '<p>Constitution measures your health and durability. You typically use Constitution to hold your breath, do a forced march, run a long distance, and perform a strenuous activity for a long period. All characters benefit from having a high Constitution score.</p>',
+          Intelligence: '<p>Intelligence describes your mental acuity, your education, and your ability to reason, recall information, and employ logic to overcome challenges and complications. You typically use Intelligence to remember an important fact, find clues to a puzzle, or cast an arcane spell. Arcane magic, such as that used by wizards, often requires a keen mind for mastery and thus Intelligence is most important to such characters.</p>',
+          Wisdom: '<p>Wisdom reflects how attuned you are to your surroundings, representing general perceptiveness, intuition, insight, and other, less tangible senses. Wisdom is also important for understanding divine edicts and expectations.</p><p>Although Wisdom is important to all characters who want to be alert, Wisdom is especially important to clerics and druids, since the ability is crucial for channeling divine power from the gods and the environment.</p>',
+          Charisma: '<p>Charisma measures your ability to influence others and the strength of your personality. A high Charisma suggests a strong sense of purpose, whereas a low Charisma indicates a less self-assured personality. Charisma also determines how well you lead those who follow you.</p><p>All characters benefit from a high Charisma, especially those who deal with nonplayer characters, such as hirelings, henchmen, and intelligent monsters. Charisma is also important to spellcasters who manipulate magical power through sheer force of will.</p>',
+        },
       }
     }
   }

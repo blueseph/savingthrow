@@ -146,7 +146,28 @@
               }]
             }
           })
-          ;
+
+          .state('create/spells', {
+            url:'/create/:id/spells',
+            templateUrl: baseUrl + 'creation/spells/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          })
+
+          .state('create/misc', {
+            url:'/create/:id/misc',
+            templateUrl: baseUrl + 'creation/misc/index.ng.html',
+            controller: 'createCtrl',
+            resolve: {
+              "currentUser": ["$meteor", function($meteor) {
+                return $meteor.requireUser();
+              }]
+            }
+          });
 
           $urlRouterProvider.otherwise("/");
 

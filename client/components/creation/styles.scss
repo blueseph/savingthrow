@@ -12,6 +12,7 @@
       flex-direction: column;
       border-right: 1px solid #777;
       box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.16);
+      overflow: auto;
 
       .class, .subclass {
         margin-top: 2rem;
@@ -30,6 +31,10 @@
         pointer-events: none;
       }
 
+      .prof label , .saving label  {
+        pointer-events: inherit;
+      }
+
       .entryContent {
         width: 100%;
         flex: 1;
@@ -46,6 +51,7 @@
       position: relative;
       overflow: auto;
       padding-bottom: 25px;
+      box-shadow: inset 3px 5px 10px 0 rgba(0, 0, 0, 0.16);
 
       .large {
         margin-bottom: 25px;
