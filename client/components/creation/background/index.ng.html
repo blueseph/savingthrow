@@ -5,8 +5,9 @@
         <p>Your background provides important story cues about your characters identity. You also get a couple of neat features to boot, too.</p>
         <div class="input-field col s5 center-align">
           <select  material-select
-            ng-model="character.background">
-            <option ng-repeat="background in backgrounds">{{background}}</option>
+            ng-model="character.background"
+            ng-change="applyBackground()"
+            ng-options="background as background for background in backgrounds">
           </select>
           <label>Backgrounds</label>
         </div>

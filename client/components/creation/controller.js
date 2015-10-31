@@ -15,6 +15,7 @@
       $scope.workflow = ['race', 'class', 'background', 'details', 'ability', 'equipment', 'spells', 'misc'];
       $scope.content = $meteor.collection(Content)[0];
       $scope.items = $meteor.collection(Items);
+      $scope.backgroundsActual = $meteor.collection(Backgrounds);
 
       $scope.races = $scope.content['en-us'].races;
       $scope.proficiencies = $scope.content['en-us'].proficiencies;
@@ -40,6 +41,20 @@
         });
 
         return isName ? !isName : total >= 3;
+      };
+
+      $scope.applyBackground = function() {
+        var char = $scope.character;
+        var backgrounds = $scope.backgroundsActual;
+        console.log(char);
+
+        if (!_.isUndefined(char.background)) {
+          var backgroundActual = _.find(backgrounds, function(_background) {
+            if (background === _background.name) { return _background; }
+          });
+
+
+        }
       };
 
       $scope.removeSubrace = function() {
@@ -115,10 +130,7 @@
                   error.errorMsg = 'Please select a saving throw';
                 }
               }
-
             }
-
-
             break;
 
           case 'background':
@@ -129,10 +141,20 @@
             break;
 
           case 'details':
+
             if (_.isUndefined(char.alignment)) {
               error.hasError = true;
               error.errorMsg = 'Please select an alignment';
             }
+
+            if  (_.isUndefined(char.name) ||
+                 _.isUndefined(char.age) ||
+                 _.isUndefined(char.sex) ||
+                 _.isUndefined(char.height) ||
+                 _.isUndefined(char.weight)) {
+                   error.hasError = true;
+                   error.errorMsg = 'Please fill out these details';
+                 }
             break;
 
           case 'ability':
@@ -143,6 +165,7 @@
                _.isUndefined(char.stats.wisdom) ||
                _.isUndefined(char.stats.charisma) ) {
                  error.hasError = true;
+                 error.errorMsg = 'Please fill out these details';
                }
 
         }

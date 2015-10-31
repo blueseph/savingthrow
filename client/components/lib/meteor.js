@@ -1,5 +1,3 @@
-Accounts.ui.config({
-  passwordSignupFields: "USERNAME_AND_EMAIL"
-});
-
 Meteor.subscribe("content");
+Meteor.subscribe("items");
+Meteor.subscribe("backgrounds");

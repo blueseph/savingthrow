@@ -38,12 +38,4 @@ Meteor.startup(function() {
     Characters.insert(sampleCharacter);
   }
 
-  Meteor.publish('content', function() {
-    return Content.find();
-  });
-
-  Meteor.publish('items', function() {
-    return Items.find();
-  });
-
 });

@@ -1,3 +1,7 @@
+Meteor.publish('content', function() {
+  return Content.find();
+});
+
 Content.remove({}); // removes all content
 
 var content =  {
