@@ -56,7 +56,7 @@
 
 /* deals with chrome autocomplete */
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #E1E1E1 inset;
+    -webkit-box-shadow: 0 0 0px 1000px #E1E1E1 inset !important;
 }
 
 @media only screen and (max-width: 401px) {

@@ -1,0 +1,34 @@
+<div class="content-body"
+      ng-controller="resetCtrl as rc">
+  <div class="container row">
+    <form name="registerForm"
+          class="register col s12 l4 m12 offset-l3"
+          novalidate>
+      <h5 class="center-align">Reset your password</h5>
+
+      <div class="input-field col s12">
+        <input type="password"
+               class="validate"
+               ng-model="password"
+               minlength=6
+               name="password"/>
+        <label for="password"
+               data-error="Password must be at least 6 characters."
+               data-success="Password is valid.">Password</label>
+      </div>
+      <div class="input-field col s12">
+        <input type="password"
+               class="validate"
+               minlength=6
+               ng-model="passwordV"
+               name="passwordV"/>
+        <label for="passwordV"
+               data-error={{passwordVError()}}
+               data-success="Password is valid and matches.">Verify Password</label>
+      </div>
+
+      <button class="waves-effect waves-light btn col s12"
+              ng-click="doReset()">Recover</button>
+    </form>
+  </div>
+</div>

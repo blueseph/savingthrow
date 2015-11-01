@@ -1,0 +1,29 @@
+<div class="content-body"
+      ng-controller="recoverCtrl as rc">
+  <div class="container row">
+    <form name="registerForm"
+          class="register col s12 l4 m12 offset-l3">
+      <h5 class="center-align">We all forget sometimes</h5>
+
+      <div class="input-field col s12">
+        <input type="email"
+               ng-model="email"
+               class="validate"
+               name="email"/>
+        <label for="email"
+                data-error="Email must be valid."
+                data-success="Email is valid.">Email</label>
+      </div>
+
+      <button class="waves-effect waves-light btn col s12"
+              ng-click="doRecover()">Recover</button>
+    </form>
+    <div class="switch col s12 l4 m12 offset-l3">
+      <p>
+        Not a member?
+      </p>
+      <button class="btn col s12"
+              ng-click="toRegister()">Register</button>
+    </div>
+  </div>
+</div>

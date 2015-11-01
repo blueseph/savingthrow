@@ -1,0 +1,75 @@
+.content{
+
+ .content-body {
+    padding:30px 40px 0 40px
+  }
+
+  .login {
+    box-shadow: 2px 4px 17px 0px rgba(85,85,85,1);
+    border: 1px solid #222;
+    background: #E1E1E1;
+    padding: 35px 20px 25px;
+    min-width: 320px;
+
+    .input-field {
+      margin-top: 2.5rem;
+    }
+
+    label {
+      pointer-events: none;
+      width: 100%;
+    }
+
+    h5 {
+      margin-bottom: 1.2rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background: #3498DB;
+    }
+  }
+
+  .switch {
+    padding: 10px 20px 25px;
+    background: #343434;
+    border: 1px solid black;
+    border-top: none;
+    color: white;
+    min-width: 320px;
+
+    p {
+      margin-bottom: 1.4rem;
+    }
+    button {
+      background: #5bc0de;
+    }
+  }
+}
+
+.failure-toast {
+  background: #be4b49;
+}
+.success-toast {
+  background: #578843;
+}
+.info-toast {
+  background: #01A7E6;
+}
+
+/* deals with chrome autocomplete */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #E1E1E1 inset !important;
+}
+
+@media only screen and (max-width: 401px) {
+  .content {
+    .content-body {
+      padding: 20px 0 !important;
+
+      .login, .switch {
+        min-width: 120px;
+      }
+    }
+  }
+}

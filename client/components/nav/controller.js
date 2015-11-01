@@ -24,7 +24,12 @@
 
       $scope.isLoginArea = function() {
 
-        if ($location.path().indexOf('register') > -1 || $location.path().indexOf('login') > -1) {
+        if ($location.path().indexOf('register') > -1 ||
+            $location.path().indexOf('login') > -1 ||
+            $location.path().indexOf('reset') > -1 ||
+            $location.path().indexOf('recover') > -1)
+          {
+
           return true;
         }
 

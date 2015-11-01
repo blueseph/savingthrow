@@ -4,7 +4,7 @@
     padding:30px 40px 0 40px
   }
 
-  .login {
+  .register {
     box-shadow: 2px 4px 17px 0px rgba(85,85,85,1);
     border: 1px solid #222;
     background: #E1E1E1;
@@ -53,13 +53,10 @@
 .success-toast {
   background: #578843;
 }
-.info-toast {
-  background: #01A7E6;
-}
 
 /* deals with chrome autocomplete */
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #E1E1E1 inset;
+    -webkit-box-shadow: 0 0 0px 1000px #E1E1E1 inset !important;
 }
 
 @media only screen and (max-width: 401px) {
@@ -67,7 +64,7 @@ input:-webkit-autofill {
     .content-body {
       padding: 20px 0 !important;
 
-      .login, .switch {
+      .register, .switch {
         min-width: 120px;
       }
     }
