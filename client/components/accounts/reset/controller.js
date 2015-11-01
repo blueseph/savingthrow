@@ -25,7 +25,6 @@
             $location.path('/characters');
           }, 3500);
         }, function(err) {
-          console.log(err);
           Materialize.toast('Sorry, there was an error. ' + err.reason + '.' , 3000, 'success-toast');
         });
       }
