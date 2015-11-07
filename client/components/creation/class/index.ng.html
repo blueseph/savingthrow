@@ -24,7 +24,7 @@
           <h6><strong>Proficiencies</strong></h6>
           <div class="prof col s12 l4"
                ng-repeat="(prof, name) in proficiencies">
-            <input type="checkbox" id="{{name}}" ng-model="character.proficiencies[name]"
+            <input type="checkbox" id="{{name}}" ng-model="character.base.proficiencies[name]"
                    ng-disabled="profDisabled(name)">
             <label for="{{name}}">{{name}}</label>
           </div>
@@ -40,7 +40,7 @@
           <p class="col s12 l4"
             ng-repeat="attribute in attributes">
             <input name="saving" type="radio" id="{{attribute}}"
-                  ng-model="character.savingthrow" ng-value=attribute>
+                  ng-model="character.base.savingthrow" ng-value=attribute>
             <label for="{{attribute}}">{{attribute}}</label>
           </p>
         </div>

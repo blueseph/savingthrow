@@ -19,7 +19,7 @@
       if ($scope.email) {
         $meteor.forgotPassword( { email : $scope.email })
         .then(function() {
-          Materialize.toast('Email has been sent! Please check your inbox and follow the instructions', 3000, 'success-toast');
+          Materialize.toast('Reset email has been sent.', 3000, 'success-toast');
         }, function(err) {
           Materialize.toast('An error occured. ' + err.reason + '.', 3000, 'failure-toast');
         });

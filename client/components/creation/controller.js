@@ -35,26 +35,70 @@
         var total = 0;
         var isName = false;
 
-        _.each($scope.character.proficiencies, function(prof, _name) {
-          if (name == _name && prof) { isName = true; }
-          if (prof) { total++; }
-        });
+        if (!_.isUndefined($scope.character.base)) {
+          _.each($scope.character.base.proficiencies, function(prof, _name) {
+            if (name == _name && prof) { isName = true; }
+            if (prof) { total++; }
+          });
+        }
 
         return isName ? !isName : total >= 3;
       };
 
       $scope.applyBackground = function() {
         var char = $scope.character;
+        char.bonus = char.bonus  || {};
         var backgrounds = $scope.backgroundsActual;
-        console.log(char);
+        var backgroundActual = _.find(backgrounds, function(_background) {
+          if (char.background === _background.name) { return _background; }
+        });
 
-        if (!_.isUndefined(char.background)) {
-          var backgroundActual = _.find(backgrounds, function(_background) {
-            if (background === _background.name) { return _background; }
+          //if char has background, remove all background bonuses
+        char.bonus.background = {};
+
+        //apply bonuses
+        _.each(backgroundActual.bonus, function(value, key) {
+          if (_.isArray(value)) {
+            char.bonus.background[key] = {};
+            _.each(value, function(bonus) {
+              char.bonus.background[key][bonus] = true;
+            });
+          } else {
+            char.bonus.background[key] = value;
+          }
+        });
+
+        $scope.calculateCharacter();
+      };
+
+      $scope.calculateCharacter = function() {
+        var char = $scope.character;
+        char.calculatedValues = {};
+        var calcVal = char.calculatedValues;
+
+        _.each(char.base, function(bonus, attribute) {
+          if (_.isArray(bonus)) {
+            calcVal[attribute] = {};
+            calcVal[attribute][bonus] = true;
+          } else {
+            calcVal[attribute] = bonus;
+          }
+        });
+
+        //need to account for the fact that we store to origin of each bonus
+        //otherwise its the same function
+        _.each(char.bonus, function(origin) {
+          _.each(origin, function(bonus, attribute) {
+            if (_.isObject(bonus)) {
+              _.each(bonus, function(value, skill) {
+                  calcVal[attribute][skill] = value;
+              });
+            } else {
+              calcVal[attribute] = bonus;
+            }
           });
+        });
 
-
-        }
       };
 
       $scope.removeSubrace = function() {
@@ -116,7 +160,7 @@
             {
               var count = 0;
 
-              _.each($scope.character.proficiencies, function(prof, _name) {
+              _.each($scope.character.base.proficiencies, function(prof, _name) {
                 if (prof) { count++; }
               });
 
@@ -125,7 +169,7 @@
                 error.errorType = 'info';
                 error.errorMsg = 'You can select up to three proficiencies';
               } else {
-                if (!char.savingthrow) {
+                if (!char.base.savingthrow) {
                   error.hasError = true;
                   error.errorMsg = 'Please select a saving throw';
                 }
@@ -158,12 +202,12 @@
             break;
 
           case 'ability':
-          if  (_.isUndefined(char.stats.strength) ||
-               _.isUndefined(char.stats.dexterity) ||
-               _.isUndefined(char.stats.constitution) ||
-               _.isUndefined(char.stats.intelligence) ||
-               _.isUndefined(char.stats.wisdom) ||
-               _.isUndefined(char.stats.charisma) ) {
+          if  (_.isUndefined(char.base.stats.strength) ||
+               _.isUndefined(char.base.stats.dexterity) ||
+               _.isUndefined(char.base.stats.constitution) ||
+               _.isUndefined(char.base.stats.intelligence) ||
+               _.isUndefined(char.base.stats.wisdom) ||
+               _.isUndefined(char.base.stats.charisma) ) {
                  error.hasError = true;
                  error.errorMsg = 'Please fill out these details';
                }

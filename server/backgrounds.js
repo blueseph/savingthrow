@@ -7,7 +7,7 @@ Backgrounds.remove({}); // removes all content
 var Acolyte = {
   name: 'Acolyte',
   bonus: {
-    skill: ['Insight', 'Religion'],
+    proficiencies: ['Insight', 'Religion'],
     language: 2,
   }
 };
@@ -15,77 +15,77 @@ var Acolyte = {
 var Charlatan = {
   name: 'Charlatan',
   bonus: {
-    skill: ['Deception', 'Sleight of Hand'],
+    proficiencies: ['Deception', 'Sleight of Hand'],
   }
 };
 
 var Criminal = {
   name: 'Criminal',
   bonus: {
-    skill: ['Deception', 'Stealth'],
+    proficiencies: ['Deception', 'Stealth'],
   }
 };
 
 var Entertainer = {
   name: 'Entertainer',
   bonus: {
-    skill: ['Acrobatics', 'Performance'],
+    proficiencies: ['Acrobatics', 'Performance'],
   }
 };
 
 var GuildArtisan = {
   name: 'Guild Artisan',
   bonus: {
-    skill: ['Insight, Persuasion'],
+    proficiencies: ['Insight, Persuasion'],
   }
 };
 
 var Hermit = {
   name: 'Hermit',
   bonus: {
-    skill: ['Medicine, Religion']
+    proficiencies: ['Medicine, Religion']
   }
 };
 
 var Noble = {
   name: 'Noble',
   bonus: {
-    skill: ['History', 'Persuasion']
+    proficiencies: ['History', 'Persuasion']
   }
 };
 
 var Outlander = {
   name: 'Outlander',
   bonus: {
-    skill: ['Athletics', 'Survival']
+    proficiencies: ['Athletics', 'Survival']
   }
 };
 
 var Sage = {
   name: 'Sage',
   bonus: {
-    skill: ['Arcana, History']
+    proficiencies: ['Arcana, History']
   }
 };
 
 var Sailor =  {
   name: 'Sailor',
   bonus: {
-    skill: ['Athletics', 'Perception']
+    proficiencies: ['Athletics', 'Perception']
   }
 };
 
 var Soldier = {
   name: 'Soldier',
   bonus: {
-    skill: ['Athletics, Intimidation']
+    proficiencies: ['Athletics, Intimidation']
   }
 };
 
 var Urchin = {
   name: 'Urchin',
   bonus: {
-    skill: ['Sleight of Hand', 'Stealth']
+    proficiencies: ['Sleight of Hand', 'Stealth']
   }
 };
 

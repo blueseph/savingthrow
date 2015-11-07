@@ -19,7 +19,7 @@
             <h6><strong>Proficiencies</strong></h6>
             <div class="prof col s12 l4"
                  ng-repeat="(prof, name) in proficiencies">
-              <input type="checkbox" id="{{name}}" ng-model="character.proficiencies[name]"
+              <input type="checkbox" id="{{name}}" ng-model="character.calculatedValues.proficiencies[name]"
                      disabled="disabled">
               <label for="{{name}}">{{name}}</label>
             </div>

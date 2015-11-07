@@ -20,7 +20,7 @@
         $meteor.resetPassword(Session.get('resetPassword'), $scope.password)
         .then(function() {
           Session.set('resetPassword', $stateParams.token);
-          Materialize.toast('Your password has been successfully reset. Logging you in.', 3000, 'success-toast');
+          Materialize.toast('Password reset successfully. Redirecting.', 3000, 'success-toast');
           $timeout(function() {
             $location.path('/characters');
           }, 3500);

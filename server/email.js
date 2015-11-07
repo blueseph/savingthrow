@@ -1,10 +1,10 @@
 Meteor.startup(function() {
 
   Accounts.emailTemplates.siteName = "Saving Throw";
-  Accounts.emailTemplates.from = "Automated Message <no-reply@savingthrow.io>";
+  Accounts.emailTemplates.from = "Saving Throw <no-reply@savingthrow.io>";
 
   Accounts.emailTemplates.resetPassword.from = function() {
-    return 'Account Recovery <no-reply@savingthrow.io>';
+    return 'Saving Throw';
   };
 
   Accounts.emailTemplates.resetPassword.subject = function() {
