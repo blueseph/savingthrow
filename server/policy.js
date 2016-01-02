@@ -7,7 +7,8 @@ BrowserPolicy.content.allowFontDataUrl();
 var trusted = [
   '*.google-analytics.com',
   '*.mxpnl.com',
-  '*.zendesk.com'
+  '*.zendesk.com',
+  '*.googleapis.com'
 ];
 
 _.each(trusted, function(origin) {
