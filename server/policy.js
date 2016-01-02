@@ -8,7 +8,8 @@ var trusted = [
   '*.google-analytics.com',
   '*.mxpnl.com',
   '*.zendesk.com',
-  '*.googleapis.com'
+  '*.googleapis.com',
+  '*.gstatic.com',
 ];
 
 _.each(trusted, function(origin) {
