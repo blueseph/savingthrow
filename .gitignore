@@ -1,3 +1,5 @@
 .meteor/local
 .meteor/meteorite
 *.pem
+settings.json
+mup.json
