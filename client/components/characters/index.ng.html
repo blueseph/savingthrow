@@ -30,16 +30,17 @@
 
   </div>
   <div class="rightBar col s12">
-        <p>
-          alright here would go all the neat stuff that told u about ur champ
-        </p>
-
-        <p>
-          like right now ur strength is {{character.stats.strength}}
-        </p>
-        <p>
-          and i mean ur wis is {{character.stats.wisdom}} but really who cares lol
-        </p>
+      <div class="rightBarContent"
+          ng-if="characters.length == 0">
+          <div class="rightBarCTA">
+            <h3>Let's get to work.</h3>
+            <p>
+              We're really excited you decided to join. We worked REALLY hard on making character creation and management as easy as can be.
+              Let us hold your hand through the whole process.
+            </p>
+            <button class="btn">Create your first character</button>
+          </div>
+      </div>
   </div>
 
 </div>

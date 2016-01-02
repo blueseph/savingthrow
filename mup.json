@@ -15,6 +15,10 @@
 
   "app": ".",
 
+  "ssl": {
+    "pem": "./ssl.pem"
+  },
+
   "env": {
     "ROOT_URL": "http://savingthrow.io"
   },

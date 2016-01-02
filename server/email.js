@@ -16,7 +16,7 @@ Meteor.startup(function() {
            'Please click here to reset your password\n\n' + url;
   };
 
-  process.env.MAIL_URL = 'smtp://postmaster%40savingthrow.io:eeb5f700534d7337cfc87737df960422@smtp.mailgun.org:587';
+  process.env.MAIL_URL = 'smtp://postmaster%40savingthrow.io:' + Meteor.settings.private.MailApiKey + '@smtp.mailgun.org:587';
 
   Accounts.urls.resetPassword = function(token) {
     return Meteor.absoluteUrl('reset/' + token);

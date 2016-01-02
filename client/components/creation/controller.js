@@ -68,12 +68,14 @@
           }
         });
 
+        char.bonus.background.name = backgroundActual;
+
         $scope.calculateCharacter();
       };
 
       $scope.calculateCharacter = function() {
+        $scope.character.calculatedValues = {};
         var char = $scope.character;
-        char.calculatedValues = {};
         var calcVal = char.calculatedValues;
 
         _.each(char.base, function(bonus, attribute) {

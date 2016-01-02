@@ -4,7 +4,7 @@
       <h5>Let's start by picking your race</h5>
       <div class="class col l12">
         <p>Your race gives you a few interesting characteristics, like bonus stats, darkvision, etc.</p>
-        <div class="input-field col s5 center-align">
+        <div class="input-field col m5 s12 center-align">
           <select  material-select
             ng-change="removeSubrace()"
             ng-model="character.race">
@@ -18,7 +18,7 @@
            ng-show="hasSubrace(character.race)">
            <p>
              Your race has subraces, which provide extra characteristics.
-             <div class="input-field col s5 center-align">
+             <div class="input-field col m5 s12 center-align">
                <select  material-select watch
                  ng-model="character.subrace"
                  ng-init="character.subrace = character.subrace || subraces[character.race][0]">
@@ -30,8 +30,8 @@
       </div>
     </div>
 
-    <div class="button col l12">
-      <button class="btn right"
+    <div class="button col l12 s12">
+      <button class="btn right col s12 l3"
               ng-click="finishedState('race')">Next</button>
     </div>
   </div>

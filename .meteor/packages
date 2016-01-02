@@ -29,3 +29,5 @@ urigo:angular-blaze-template
 angularjs:angular-sanitize
 meteorhacks:kadira
 email
+force-ssl
+browser-policy
