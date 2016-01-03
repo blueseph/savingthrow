@@ -33,11 +33,15 @@
 
       // go through the base character
       _.each(character.base, function(bonus, attribute) {
+        cStats[attribute] = cStats[attribute] || {};
         if (_.isArray(bonus)) {
-          cStats[attribute] = {};
           cStats[attribute][bonus] = true;
+        } else if (_.isObject(bonus)) {
+          _.each(_.keys(bonus), function(key) {
+            cStats[attribute][key] = bonus[key];
+          });
         } else {
-          cStats[attribute] = bonus;
+          delete cStats[attribute];
         }
       });
 

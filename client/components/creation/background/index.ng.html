@@ -19,9 +19,10 @@
             <h6><strong>Proficiencies</strong></h6>
             <div class="prof col s12 l4"
                  ng-repeat="(prof, name) in proficiencies">
-              <input type="checkbox" id="{{name}}" ng-model="character.calculatedValues.proficiencies[name]"
+              <input type="checkbox" id="{{name}}" ng-model="character.computedStats.proficiencies[name]"
                      disabled="disabled">
-              <label for="{{name}}">{{name}}</label>
+              <label for="{{name}}"
+                     ng-class="{'checkbox-green': isFromBackground(name)}">{{name}}</label>
             </div>
           </div>
         </div>

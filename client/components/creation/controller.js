@@ -200,6 +200,10 @@
         return error;
       };
 
+      $scope.isFromBackground = function(proficiency) {
+        return backgroundService.checkProficiency(proficiency, $scope.character);
+      };
+
       $scope.backup = function() {
         //determine where we are
         var split = $location.$$path.split('/');

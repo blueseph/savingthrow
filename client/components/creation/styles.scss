@@ -14,6 +14,14 @@
       box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.16);
       overflow: auto;
 
+      .checkbox-green {
+        color: green;
+      }
+
+      .checkbox-blue {
+        color: blue;
+      }
+
       .class, .subclass {
         margin-top: 2rem;
       }
