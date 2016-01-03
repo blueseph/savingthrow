@@ -4,12 +4,12 @@
       <div class="class col l12">
         <p>Your background provides important story cues about your characters identity. You also get a couple of neat features to boot, too.</p>
         <div class="input-field col m5 s12 center-align">
-          <select  material-select
-            ng-model="character.background"
-            ng-change="applyBackground()"
-            ng-options="background as background for background in backgrounds">
-          </select>
           <label>Backgrounds</label>
+          <select  material-select
+            name="charBG"
+            ng-model="character.background">
+            <option ng-repeat="background in backgrounds">{{background}}</option>
+          </select>
         </div>
 
         <div class="col l12"

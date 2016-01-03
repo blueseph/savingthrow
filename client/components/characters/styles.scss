@@ -42,6 +42,7 @@
         border-top: 1px solid #A8A8A8;
         background: #EEEEEE;
         padding: 15px;
+        position: relative;
 
         .name {
           font-size: 1.2em;
@@ -60,21 +61,27 @@
 
     .rightBar {
       width: calc(100vw - 270px);
-      max-height: calc(100vh - 64px);
+      height: calc(100vh - 64px);
       overflow: auto;
       padding: 0;
       margin-top: 5px;
 
       .rightBarContent {
+        height: 100%;
         padding: 20px;
-        display: flex;
 
         .rightBarCTA {
-          align-self: center;
-          width: 500px;
-          text-align: center;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
 
-          h3 {
+          .CTAContent {
+            width: 500px;
+            text-align: center;
+          }
+
+          h4 {
             color:rgb(52, 152, 219);
           }
 

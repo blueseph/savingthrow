@@ -36,12 +36,19 @@
         var character = {
           owner: $rootScope.currentUser._id,
           newCharacter: true,
-          status: []
+          status: [],
+          background: null,
         };
 
         $scope.characters.save(character).then(function(status) {
           var id = status[0]._id;
           $location.path('/create/' + id);
+        });
+      };
+
+      $scope.deleteCharacter = function(character) {
+        $scope.characters.remove(character._id).then(function() {
+          $location.path('/characters/');
         });
       };
     }

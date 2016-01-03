@@ -9,13 +9,15 @@
                "$stateParams",
                "$rootScope",
                "$sce",
+               "characterService",
+               "backgroundService",
                 createCtrl]);
 
-    function createCtrl($scope, $location, $meteor, $stateParams, $rootScope, $sce) {
+    function createCtrl($scope, $location, $meteor, $stateParams, $rootScope,
+                        $sce, characterService, backgroundService) {
       $scope.workflow = ['race', 'class', 'background', 'details', 'ability', 'equipment', 'spells', 'misc'];
       $scope.content = $meteor.collection(Content)[0];
-      $scope.items = $meteor.collection(Items);
-      $scope.backgroundsActual = $meteor.collection(Backgrounds);
+      $scope.backgroundsActual =
 
       $scope.races = $scope.content['en-us'].races;
       $scope.proficiencies = $scope.content['en-us'].proficiencies;
@@ -27,6 +29,47 @@
 
       $scope.abilityText = $scope.content['en-us'].pages.create.ability.Default;
 
+      $scope.finalizeCharacter = function() {
+        $scope.character.newCharacter = false;
+        delete $scope.character.status;
+        $location.path('/character/' + $scope.character._id);
+      };
+
+      $scope.determineState = function(character) {
+        var locationToGo;
+
+        _.each($scope.workflow, function(state) {
+          if (!_.contains(character.status, state) && _.isUndefined(locationToGo)) { locationToGo = state; }
+        });
+
+        if (_.isUndefined(locationToGo)) {
+          //user has completed all states
+          $scope.finalizeCharacter();
+        } else {
+          $location.path(basePath + locationToGo);
+        }
+      };
+
+      $scope.characters = $meteor.collection(Characters).subscribe('characters');
+
+      if ($stateParams.id !== 'undefined') {
+        $scope.character = $meteor.object(Characters, $stateParams.id).subscribe('characters');
+        var basePath = '/create/' + $scope.character._id + '/';
+
+        var split = $location.$$path.split('/');
+        if (split[split.length - 1] == $scope.character._id) {
+          $scope.determineState($scope.character);
+        }
+      } else {
+        $location.path('/characters');
+      }
+
+      $scope.$watch("character.background", function() {
+        if (!_.isNull($scope.character.background) && !_.isUndefined($scope.character.background)) {
+          backgroundService.applyBackground($scope.character.background, $scope.character);
+        }
+      });
+
       $scope.swapAbilityText = function(ability) {
         $scope.abilityText = $scope.content['en-us'].pages.create.ability[ability];
       };
@@ -35,7 +78,7 @@
         var total = 0;
         var isName = false;
 
-        if (!_.isUndefined($scope.character.base)) {
+        if (!_.isUndefined($scope.character) && !_.isUndefined($scope.character.base)) {
           _.each($scope.character.base.proficiencies, function(prof, _name) {
             if (name == _name && prof) { isName = true; }
             if (prof) { total++; }
@@ -43,68 +86,6 @@
         }
 
         return isName ? !isName : total >= 3;
-      };
-
-      $scope.applyBackground = function() {
-        var char = $scope.character;
-        char.bonus = char.bonus  || {};
-        var backgrounds = $scope.backgroundsActual;
-        var backgroundActual = _.find(backgrounds, function(_background) {
-          if (char.background === _background.name) { return _background; }
-        });
-
-          //if char has background, remove all background bonuses
-        char.bonus.background = {};
-
-        //apply bonuses
-        _.each(backgroundActual.bonus, function(value, key) {
-          if (_.isArray(value)) {
-            char.bonus.background[key] = {};
-            _.each(value, function(bonus) {
-              char.bonus.background[key][bonus] = true;
-            });
-          } else {
-            char.bonus.background[key] = value;
-          }
-        });
-
-        char.bonus.background.name = backgroundActual;
-
-        $scope.calculateCharacter();
-      };
-
-      $scope.calculateCharacter = function() {
-        $scope.character.calculatedValues = {};
-        var char = $scope.character;
-        var calcVal = char.calculatedValues;
-
-        _.each(char.base, function(bonus, attribute) {
-          if (_.isArray(bonus)) {
-            calcVal[attribute] = {};
-            calcVal[attribute][bonus] = true;
-          } else {
-            calcVal[attribute] = bonus;
-          }
-        });
-
-        //need to account for the fact that we store to origin of each bonus
-        //otherwise its the same function
-        _.each(char.bonus, function(origin) {
-          _.each(origin, function(bonus, attribute) {
-            if (_.isObject(bonus)) {
-              _.each(bonus, function(value, skill) {
-                  calcVal[attribute][skill] = value;
-              });
-            } else {
-              calcVal[attribute] = bonus;
-            }
-          });
-        });
-
-      };
-
-      $scope.removeSubrace = function() {
-          delete $scope.character.subrace;
       };
 
       $scope.hasSubrace = function(race) {
@@ -233,41 +214,6 @@
 
         $location.path(basePath + state);
       };
-
-      $scope.determineState = function(character) {
-        var locationToGo;
-
-        _.each($scope.workflow, function(state) {
-          if (!_.contains(character.status, state) && _.isUndefined(locationToGo)) { locationToGo = state; }
-        });
-
-        if (_.isUndefined(locationToGo)) {
-          //user has completed all states
-          $scope.finalizeCharacter();
-        } else {
-          $location.path(basePath + locationToGo);
-        }
-      };
-
-      $scope.finalizeCharacter = function() {
-        $scope.character.newCharacter = false;
-        delete $scope.character.status;
-        $location.path('/character/' + $scope.character._id);
-      };
-
-      $scope.characters = $meteor.collection(Characters).subscribe('characters');
-
-      if ($stateParams.id !== 'undefined') {
-        $scope.character = $meteor.object(Characters, $stateParams.id).subscribe('characters');
-        var basePath = '/create/' + $scope.character._id + '/';
-
-        var split = $location.$$path.split('/');
-        if (split[split.length - 1] == $scope.character._id) {
-          $scope.determineState($scope.character);
-        }
-      } else {
-        $location.path('/characters');
-      }
 
     }
 })();

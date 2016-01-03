@@ -6,7 +6,7 @@
         <p>Your race gives you a few interesting characteristics, like bonus stats, darkvision, etc.</p>
         <div class="input-field col m5 s12 center-align">
           <select  material-select
-            ng-change="removeSubrace()"
+            ng-change="characterService.deleteSubrace()"
             ng-model="character.race">
             <option ng-repeat="race in races">{{race}}</option>
           </select>
