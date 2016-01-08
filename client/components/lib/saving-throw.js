@@ -203,7 +203,7 @@
       //if a user is logged in and visiting non-logged in states, redirect them to characters.
       if (toState.name == 'login' || toState.name == 'register' || toState.name == 'home')
       {
-        if (event && event.targetScope && event.targetScope.currentUser)
+        if (event && event.targetScope && !_.isNull(event.targetScope.currentUser))
         {
           event.preventDefault();
           $state.go('characters');

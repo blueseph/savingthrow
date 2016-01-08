@@ -38,8 +38,13 @@
       };
 
       $scope.logout = function() {
-        Meteor.logout();
-        $location.path('/');
+        Meteor.logout(function(err) {
+          if (err) {
+            console.log('Error: '+err);
+          } else {
+            $location.path('/');
+          }
+        });
       };
 
     }

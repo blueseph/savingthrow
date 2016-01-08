@@ -11,23 +11,24 @@
                "$sce",
                "characterService",
                "backgroundService",
+               "contentService",
                 createCtrl]);
 
     function createCtrl($scope, $location, $meteor, $stateParams, $rootScope,
-                        $sce, characterService, backgroundService) {
+                        $sce, characterService, backgroundService, contentService) {
       $scope.workflow = ['race', 'class', 'background', 'details', 'ability', 'equipment', 'spells', 'misc'];
-      $scope.content = $meteor.collection(Content)[0];
-      $scope.backgroundsActual =
 
-      $scope.races = $scope.content['en-us'].races;
-      $scope.proficiencies = $scope.content['en-us'].proficiencies;
-      $scope.subraces = $scope.content['en-us'].subraces;
-      $scope.classes = $scope.content['en-us'].classes;
-      $scope.backgrounds = $scope.content['en-us'].backgrounds;
-      $scope.alignments = $scope.content['en-us'].alignments;
-      $scope.attributes = $scope.content['en-us'].attributes;
+      $scope.content = contentService.getContentFromCulture('en-us');
 
-      $scope.abilityText = $scope.content['en-us'].pages.create.ability.Default;
+      $scope.races = $scope.content.races;
+      $scope.proficiencies = $scope.content.proficiencies;
+      $scope.subraces = $scope.content.subraces;
+      $scope.classes = $scope.content.classes;
+      $scope.backgrounds = $scope.content.backgrounds;
+      $scope.alignments = $scope.content.alignments;
+      $scope.attributes = $scope.content.attributes;
+
+      $scope.abilityText = $scope.content.pages.create.ability.Default;
 
       $scope.finalizeCharacter = function() {
         $scope.character.newCharacter = false;
@@ -71,7 +72,7 @@
       });
 
       $scope.swapAbilityText = function(ability) {
-        $scope.abilityText = $scope.content['en-us'].pages.create.ability[ability];
+        $scope.abilityText = $scope.content.pages.create.ability[ability];
       };
 
       $scope.profDisabled = function(name) {

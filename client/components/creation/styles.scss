@@ -14,6 +14,10 @@
       box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.16);
       overflow: auto;
 
+      .entry-flex {
+        align-self: center;
+      }
+
       .checkbox-green {
         color: green;
       }
@@ -64,6 +68,31 @@
       overflow: auto;
       padding-bottom: 25px;
       box-shadow: inset 3px 5px 10px 0 rgba(0, 0, 0, 0.16);
+
+      .default {
+        width: 100%;
+        height: 100%;
+      }
+
+      .emptyState {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+
+        .emptyStateContent {
+          background: #EEE;
+          width: 500px;
+          text-align: center;
+          padding: 55px;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+          h5 {
+            color:rgb(52, 152, 219);
+          }
+        }
+      }
 
       .large {
         margin-bottom: 25px;

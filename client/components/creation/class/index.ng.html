@@ -1,60 +1,72 @@
 <div class="row" ng-controller="createCtrl as cc">
   <div class="entry col l5">
     <div class="entryContent">
-
-      <h5>Next, let's choose your class</h5>
-      <div class="class col l12">
-        <p>Your class broadly dictates your vocation, talents, and tactics</p>
-        <div class="input-field col m5 s12 center-align chadSelect">
-          <select  material-select
-            name="charClass"
-            ng-model="character.class">
-            <option ng-repeat="class in classes">{{class}}</option>
-          </select>
-          <label>Standard Classes</label>
-        </div>
-      </div>
-
-      <div ng-show="character.class">
-        <p>
-          Good choice. You can now pick a couple of proficiencies and your saving throw
-        </p>
-
-        <div class="profs">
-          <h6><strong>Proficiencies</strong></h6>
-          <div class="prof col s12 l4"
-               ng-repeat="(prof, name) in proficiencies">
-            <input type="checkbox" id="{{name}}" ng-model="character.base.proficiencies[name]"
-                   ng-disabled="profDisabled(name)">
-            <label for="{{name}}">{{name}}</label>
+      <div class="entry-flex">
+        <div class="header"
+              ng-bind-html="content.pages.create.class.header"></div>
+        <div class="class col l12">
+          <div class="subheader"
+                ng-bind-html="content.pages.create.class.section.class.header"></div>
+          <div class="input-field col m5 s12 center-align chadSelect">
+            <select  material-select
+              name="charClass"
+              ng-model="character.class">
+              <option ng-repeat="class in classes">{{class}}</option>
+            </select>
+            <label
+                ng-bind-html="content.pages.create.class.section.class.label"></label>
           </div>
         </div>
 
-        <!-- there's some weird bug that breaks html here i dont know what it is or why it happens
-             so it requires a bunch of brs to actually do spacing. i am not happy about it. -->
-        <br><br><br><br><br><br><br>
+        <div ng-show="character.class" class="clearfix">
+          <div class="subheader"
+                ng-bind-html="content.pages.create.class.section.profs.header"></div>
+          <div class="profs">
+            <div
+            ng-bind-html="content.pages.create.class.section.profs.labels.profs"></div>
+            <div class="prof col s12 l4"
+                 ng-repeat="(prof, name) in proficiencies">
+              <input type="checkbox" id="{{name}}" ng-model="character.base.proficiencies[name]"
+                     ng-disabled="profDisabled(name)">
+              <label for="{{name}}">{{name}}</label>
+            </div>
+          </div>
 
-
-        <div class="saving">
-          <h6><strong>Saving throw</strong></h6>
-          <p class="col s12 l4"
-            ng-repeat="attribute in attributes">
-            <input name="saving" type="radio" id="{{attribute}}"
-                  ng-model="character.base.savingthrow" ng-value=attribute>
-            <label for="{{attribute}}">{{attribute}}</label>
-          </p>
+          <div class="saving">
+            <div
+            ng-bind-html="content.pages.create.class.section.profs.labels.savingthrows"></div>
+            <p class="col s12 l4"
+              ng-repeat="attribute in attributes">
+              <input name="saving" type="radio" id="{{attribute}}"
+                    ng-model="character.base.savingthrow" ng-value=attribute>
+              <label for="{{attribute}}">{{attribute}}</label>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="button col l12">
-      <button class="btn next right"
-              ng-click="finishedState('class')">Next</button>
-      <button class="btn right"
-              ng-click="backup()">Previous</button>
+      <div class="button col l12">
+        <button class="btn next right"
+                ng-click="finishedState('class')"
+                ng-bind-html="content.pages.create.buttons.next"></button>
+        <button class="btn right"
+                ng-click="backup()"
+                ng-bind-html="content.pages.create.buttons.previous"></button>
+      </div>
     </div>
   </div>
   <div class="response col l7">
-    Class specific things would go here eventually
+    <div ng-hide="character.class"
+    ng-bind-html="content.pages.create.class.Entry"></div>
+    <div ng-show="character.class">
+      <div class="cliff">
+        <div class="important"
+             ng-bind-html="content.pages.create.race.section.cliffHeader"></div>
+        <div class="notes"
+        ng-bind-html="content.pages.create.class[character.class].cliff">
+        </div>
+      </div>
+      <div ng-bind-html="content.pages.create.class[character.class].large"></div>
+    </div>
   </div>
 </div>

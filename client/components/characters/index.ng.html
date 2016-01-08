@@ -5,10 +5,12 @@
         <input type="text"
                name="search"
                ng-model="searchText">
-        <label for="search">Search Characters</label>
+        <label for="search"
+               ng-bind-html="content.pages.home.left.searchText"></label>
       </div>
       <button class="btn"
-              ng-click="newCharacter()">New Character</button>
+              ng-click="newCharacter()"
+              ng-bind-html="content.pages.home.left.createButton"></button>
     </div>
 
     <div class="characters">
@@ -32,16 +34,8 @@
   <div class="rightBar col s12">
       <div class="rightBarContent">
           <div class="rightBarCTA"
-          ng-if="characters && characters.length == 0">
-            <div class="CTAContent">
-              <h4>Let's create someone great.</h4>
-              <p>
-                We're really excited you decided to join. We worked REALLY hard on making character creation and management as easy as can be.
-                Let us hold your hand through the whole process.
-              </p>
-              <button class="btn"
-                      ng-click="newCharacter()">Create your first character</button>
-            </div>
+          ng-if="characters && characters.length == 0"
+          ng-bind-html="content.pages.home.right.emptyState">
           </div>
 
           <div ng-if="character && characters.length > 0">

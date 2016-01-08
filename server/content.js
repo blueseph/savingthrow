@@ -28,9 +28,34 @@ var content =  {
       Longsword: 'A long, double-edged blade capable of being held in both hands.',
     },
     pages: {
+      home: {
+        left: {
+          createButton: 'New Character',
+          searchText: 'Search Characters',
+        },
+        right: {
+          emptyState: '<div class="CTAContent"><h4>Let\'s create someone great.</h4><p>We\'re really excited you decided to join. We worked REALLY hard on making character creation and management as easy as can be.Let us hold your hand through the whole process.</p><button class="btn" ng-click="newCharacter()">Create your first character</button></div>',
+        }
+      },
       create: {
+        buttons: {
+          next: 'Next',
+          previous: 'Previous'
+        },
         race: {
-          Entry: 'Select a class to see the benefits it brings',
+          header: '<h5>Let\'s start by picking your race</h5>',
+          section: {
+            race: {
+              header: '<p>Your race gives you a few interesting characteristics, like bonus stats, darkvision, etc.</p>',
+              label: 'Standard Races'
+            },
+            subrace: {
+              header: '<p>Your race has subraces, which provide extra characteristics.</p>',
+              label: 'Subraces available'
+            },
+            cliffHeader: 'The Important Bits'
+          },
+          Entry: '<div class="emptyState"><div class="emptyStateContent"><h5>Your race says a lot about who you are.</h5><p>Are you a strong, burly, gnome-hating dwarf? Or is a lithe, dextrous elf more your style? Choose a race to see which one fits you best.</p></div></div>',
           Dwarf: {
             large: '<h5>Dwarves</h5><p>Kingdoms rich in ancient grandeur, halls carved into the roots of mountains, the echoing of picks and hammers in deep mines and blazing forges, a commitment to clan and tradition, and a burning hatred of goblins and orcs—these common threads unite all dwarves.Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller. Their courage and endurance are also easily a match for any of the larger folk. Dwarven skin ranges from deep brown to a paler hue tinged with red, but the most common shades are light brown or deep tan, like certain tones of earth. Their hair, worn long but in simple styles, is usually black, gray, or brown, though paler dwarves often have red hair. Male dwarves value their beards highly and groom them carefully.</p><p>Dwarves can live to be more than 400 years old, so the oldest living dwarves often remember a very different world. For example, some of the oldest dwarves living in Citadel Felbarr (in the world of the Forgotten Realms) can recall the day, more than three centuries ago, when orcs conquered the fortress and drove them into an exile that lasted over 250 years. This longevity grants them a perspective on the world that shorter-lived races such as humans and halflings lack. Dwarves are solid and enduring like the mountains they love, weathering the passage of centuries with stoic endurance and little change. They respect the traditions of their clans, tracing their ancestry back to the founding of their most ancient strongholds in the youth of the world, and don’t abandon those traditions lightly. Part of those traditions is devotion to the gods of the dwarves, who uphold the dwarven ideals of industrious labor, skill in battle, and devotion to the forge. Individual dwarves are determined and loyal, true to their word and decisive in action, sometimes to the point of stubbornness. Many dwarves have a strong sense of justice, and they are slow to forget wrongs they have suffered. A wrong done to one dwarf is a wrong done to the dwarf’s entire clan, so what begins as one dwarf’s hunt for vengeance can become a full-blown clan feud.</p>',
             cliff: '<ul><li><strong>Speed:</strong> 25 feet</li><li><strong>Size:</strong> 4-5 ft. 150lbs</li><li><strong>Age:</strong> 50-350 roughly.</li><li><strong>Languages:</strong> Common, Dwarvish</li><li><strong>Darkvision:</strong> Can see 60ft in dim light, 60ft colorless in darkness</li><li><strong>Alignment:</strong> Mostly lawful</li><li><strong>Ability Score Bonus:</strong> +2 to constitution</li><li><strong>Stonecutting:</strong>When making a history check to stonework, double proficiency bonus</li><li><strong>Dwarvish Resilience:</strong> Advantage/resistance vs poison</li><li><strong>Bonus Proficiencies:</strong> Battleaxe, handaxe, throwing hammer, warhammer.</li><li><strong>Tool Proficiency:</strong> Smith tool, brewer\'s supplies, mason\'s tools</li></ul>',
@@ -95,6 +120,75 @@ var content =  {
               }
             }
           },
+        },
+        class: {
+          Entry: '<div class="emptyState"><div class="emptyStateContent"><h5>Your class determines what you can do.</h5><p>An axe-wielding strongman. A nimble rogue. A potent wizard. Choose a class to see which fits you best. </p></div></div>',
+          header: '<h5>Next, let\'s choose your class</h5>',
+          section: {
+            class: {
+              header: '<p>Your class broadly dictates your vocation, talents, and tactics</p>',
+              label: 'Standard Classes'
+            },
+            profs: {
+              header: '<p>Good choice. You can now pick a couple of proficiencies and your saving throw.</p>',
+              labels :{
+                profs: '<h6><strong>Proficiencies</strong></h6>',
+                savingthrows: 'Saving <h6><strong>Saving throw</strong></h6>'
+              }
+            },
+            cliffHeader: 'The Important Bits'
+          },
+          Barbarian: {
+            cliff: 'BARBARIANS GOT SOME BIG OL SWINGIN DICKS',
+            large: "<h4>Barbarian</h4><p>Barbarians, different as they might be, are defined by their rage: unbridled, unquenchable, and unthinking fury. More than a mere emotion, their anger is the ferocity of a cornered predator, the unrelenting assault of a storm, the churning turmoil of the sea.</p><p>For some, their rage springs from a communion with fierce animal spirits. Others draw from a roiling reservoir of anger at a world full of pain. For every barbarian, rage is a power that fuels not just a battle frenzy but also uncanny reflexes, resilience, and feats of strength.</p><h5>Primal Instinct</h5><p>People of towns and cities take pride in how their civilized ways set them apart from animals, as if denying one’s own nature was a mark of superiority. To a barbarian, though, civilization is no virtue, but a sign o f weakness. The strong embrace their animal nature keen instincts, primal physicality, and ferocious rage. Barbarians are uncomfortable when hedged in by walls and crowds. They thrive in the wilds of their homelands: the tundra, jungle, or grasslands where their tribes live and hunt.</p><p>Barbarians come alive in the chaos of combat. They can enter a berserk state where rage takes over, giving them superhuman strength and resilience. A barbarian can draw on this reservoir of fury only a few times without resting, but those few rages are usually sufficient to defeat whatever threats arise.</p><h5>A Life of Danger</h5><p>Not every m ember of the tribes deemed “barbarians” by scions of civilized society has the barbarian class. A true barbarian among these people is as uncommon as a skilled fighter in a town, and he or she plays a similar role as a protector of the people and a leader in times of war. Life in the wild places of the world is fraught with peril: rival tribes, deadly weather, and terrifying monsters. Barbarians charge headlong into that danger so that their people don’t have to.</p><p>Their courage in the face of danger makes barbarians perfectly suited for adventuring. Wandering is often a way of life for their native tribes, and the rootless life o f the adventurer is little hardship for a barbarian. Some barbarians miss the close-knit family structures of the tribe, but eventually find them replaced by the bonds formed among the members of their adventuring parties.</p>",
+          },
+          Bard: {
+            cliff: '',
+            large: '',
+          },
+          Cleric: {
+            cliff: '',
+            large: '',
+          },
+          Druid: {
+            cliff: '',
+            large: '',
+          },
+          Fighter: {
+            cliff: '',
+            large: '',
+          },
+          Monk: {
+            cliff: '',
+            large: '',
+          },
+          Paladin: {
+            cliff: '',
+            large: '',
+          },
+          Ranger: {
+            cliff: '',
+            large: '',
+          },
+          Rogue: {
+            cliff: '',
+            large: '',
+          },
+          Sorcerer: {
+            cliff: '',
+            large: '',
+          },
+          Warlock: {
+            cliff: '',
+            large: '',
+          },
+          Wizard: {
+            cliff: '',
+            large: '',
+          },
+        },
+        backgrounds: {
+          Entry: '<div class="emptyState"><div class="emptyStateContent"><h5>Let\'s figure out who you were</h5><p>A rough and tumble soldier? Maybe a bookish sage, perhaps? Or does a purse-snatcher sound more your game? Remember, this is who you were, not necessarily who you are. You might be a thief with a heart of gold! </p></div></div>',
         },
         ability: {
           Default: '<p>Characters in D&D have six abilities: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma. A character also has a score attached to each ability. Your ability score describes in broad terms your talent, training, and competence when doing things related to that ability. The higher the score, the better your character is with that ability. Your abilities, in many ways, act as your character\'s foundation and set the stage for your adventuring career.</p><p>A typical monster has the same six abilities and follows the same rules as a character for the abilities\' use, although a monster relies on its abilities far less than an adventurer does.</p><p>A score of 10 or 11 is average for a human adult. A score of 18 is the highest that a normal person usually reaches. Adventurers can have scores as high as 20, and monsters and divine beings can have scores as high as 30. </p>',

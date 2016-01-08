@@ -8,13 +8,12 @@
                "$meteor",
                "$stateParams",
                "$rootScope",
+               "contentService",
                 charCtrl]);
 
-    function charCtrl($scope, $location, $meteor, $stateParams, $rootScope) {
+    function charCtrl($scope, $location, $meteor, $stateParams, $rootScope, contentService) {
 
-      $scope.log = function(character) {
-        console.log(character);
-      };
+      $scope.content = contentService.getContentFromCulture('en-us');
 
       $scope.characters = $meteor.collection(Characters).subscribe('characters');
 
